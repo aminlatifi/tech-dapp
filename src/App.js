@@ -42,7 +42,7 @@ function App() {
                                 </div>
                                 <div class="level-item">
                                     <div class="field">
-                                        <input id="switchRoundedDefault" type="checkbox" name="switchRoundedDefault" class="switch is-rounded is-link" checked="checked"/>
+                                        <input id="switchRoundedDefault" type="checkbox" name="switchRoundedDefault" class="switch is-rounded is-link"/>
                                         <label for="switchRoundedDefault">Setting on</label>
                                     </div>
                                 </div>
