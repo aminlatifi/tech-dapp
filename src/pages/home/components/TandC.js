@@ -26,9 +26,9 @@ const Comp = ({ agreed, onSetAgreed }) => {
                 </header>
                 <section className="modal-card-body">
 
-                    <div class="field">
-                        <div class="control">
-                            <label class="checkbox">
+                    <div className="field">
+                        <div className="control">
+                            <label className="checkbox">
                                 <input
                                     name="tandc"
                                     type="checkbox"
@@ -42,9 +42,9 @@ const Comp = ({ agreed, onSetAgreed }) => {
 
 
 
-                    <div class="field">
-                        <div class="control">
-                            <label class="checkbox">
+                    <div className="field">
+                        <div className="control">
+                            <label className="checkbox">
                                 <input
                                     name="tandc"
                                     type="checkbox"
@@ -56,9 +56,9 @@ const Comp = ({ agreed, onSetAgreed }) => {
                         </div>
                     </div>
 
-                    <div class="field">
-                        <div class="control">
-                            <label class="checkbox">
+                    <div className="field">
+                        <div className="control">
+                            <label className="checkbox">
                                 <input
                                     name="tandc"
                                     type="checkbox"
