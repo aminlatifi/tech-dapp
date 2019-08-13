@@ -3,16 +3,31 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
+import { save, load } from "redux-localstorage-simple"
 import { Provider } from "react-redux";
-import { createStore, applyMiddleware } from "redux";
+import { createStore, applyMiddleware, compose } from "redux";
 
-import techdappReducer from './store/techdapp';
+import reducer from './store/techdapp';
 
 
 import { blackBoxMiddleware } from '@oqton/redux-black-box';
 
-const store = createStore(techdappReducer, undefined, applyMiddleware(blackBoxMiddleware));
+// const store = createStore(techdappReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()), applyMiddleware(blackBoxMiddleware));
+
+
+const composeEnhancers =
+    typeof window === 'object' &&
+        window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
+        window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__({
+            // Specify extension’s options like name, actionsBlacklist, actionsCreators, serialize...
+        }) : compose;
+
+const enhancer = composeEnhancers(
+    applyMiddleware(blackBoxMiddleware,save()),
+    // applyMiddleware(save),
+);
+const store = createStore(reducer,load(), enhancer);
+
 
 ReactDOM.render(
     <Provider store={store}>
