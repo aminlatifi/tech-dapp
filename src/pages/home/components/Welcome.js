@@ -20,9 +20,9 @@ color: white;
     return (<>
         <section class="section">
             <div class="container">
-                <h1 class="title">Section</h1>
+                <h1 class="title">Welcome to the TECH token Contribution page</h1>
                 <h2 class="subtitle">
-                    A simple container to divide your page into <strong>sections</strong>, like the one you're currently reading
+                    Please connect to <strong>Metamask</strong> to continue. Click the button below...
       </h2>
       <MetaMaskButton/>
             </div>
