@@ -1,4 +1,4 @@
-import Dashboard from "./components/Dashboard";
+import Dashboard from "./components/Welcome";
 const rootPath = "/";
 
 export default {

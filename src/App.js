@@ -1,6 +1,7 @@
 import React from 'react';
 import pages from "./pages";
 import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+import "./sass/style.sass";
 
 function App() {
     return (
