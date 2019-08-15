@@ -4,8 +4,29 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 
 const TCmodal = styled.div``;
+const ModalCard = styled.div`
+  border: 2px solid #04d477;
+  border-radius: 1rem;
+`;
+const ModalTitle = styled.p`
+  font-weight: 300;
+  font-size: 1.5rem;
+  color: #04d477;
+`;
 const ModalBody = styled.section`
   color: #182129;
+  ::-webkit-scrollbar {
+    width: 12px; /* for vertical scrollbars */
+    height: 12px; /* for horizontal scrollbars */
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.5);
+  }
 `;
 
 const Comp = ({ agreed, onSetAgreed }) => {
@@ -23,9 +44,9 @@ const Comp = ({ agreed, onSetAgreed }) => {
     <>
       <TCmodal className={`modal ${agreed ? "" : "is-active"}`}>
         <div className="modal-background" />
-        <div className="modal-card">
+        <ModalCard className="modal-card">
           <header className="modal-card-head">
-            <p className="modal-card-title">Terms And Conditions</p>
+            <ModalTitle>Terms And Conditions</ModalTitle>
             {/* <button className="delete" aria-label="close"></button> */}
           </header>
           <ModalBody className="modal-card-body">
@@ -141,7 +162,7 @@ const Comp = ({ agreed, onSetAgreed }) => {
               Continue
             </button>
           </footer>
-        </div>
+        </ModalCard>
       </TCmodal>
     </>
   );
