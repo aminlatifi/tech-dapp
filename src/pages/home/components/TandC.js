@@ -17,7 +17,6 @@ const ModalBody = styled.section`
   color: #182129;
   ::-webkit-scrollbar {
     width: 12px; /* for vertical scrollbars */
-    height: 12px; /* for horizontal scrollbars */
   }
 
   ::-webkit-scrollbar-track {
