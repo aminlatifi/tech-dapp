@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import MetaMaskButton from "./MetaMaskButton";
+import csLogo from "../assets/headerlogo.svg";
 
 const Comp = ({ web3available, agreedtandc, onSetAgreedtandc }) => {
     return (
@@ -9,7 +10,7 @@ const Comp = ({ web3available, agreedtandc, onSetAgreedtandc }) => {
                 <div class="container">
                     <div class="navbar-brand">
                         <a class="navbar-item" href="../">
-                            <img src="../images/bulma.png" alt="Logo" />
+                            <img src={csLogo} alt="Logo" />
                         </a>
                         <span class="navbar-burger burger" data-target="navbarMenu">
                             <span></span>
