@@ -1,5 +1,68 @@
 @charset "utf-8";
 
+
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap')
+
 @import '~bulma/bulma.sass'
 @import '~bulma-switch/src/sass/index.sass'
+@import '~bulma-checkradio/src/sass/index.sass'
 
+.hero .navbar
+    background: #19232D
+
+.hero 
+    background: #000
+
+.tabs a
+    border-bottom-style: none
+    border-bottom-width: 1px
+    font-family: Roboto
+    font-style: normal
+    font-weight: normal
+    font-size: 14px
+    line-height: 16px
+    display: flex
+    align-items: center
+    opacity: 0.6
+    color: #FFFFFF
+
+.tabs li.is-active a 
+    color: #FFFFFF
+    border-top-color: #1BDD9D
+    border-top-style: solid
+    opacity: 1
+
+.hero.is-fullheight .hero-body
+  align-items: flex-start
+
+.notification.is-primary
+    background: #293540
+
+.title
+    font-family: Roboto
+    font-style: normal
+    font-weight: normal
+    font-size: 20px
+    line-height: 23px
+
+.subtitle
+    font-family: Roboto
+    font-style: normal
+    font-weight: normal
+    font-size: 14px
+    line-height: 16px
+    color: #FFFFFF
+    opacity: 0.6
+
+.is-text-overflow 
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+
+
+.button.is-success
+    margin-left: 2em;
+    background: #293540;
+// border-radius: 3px;

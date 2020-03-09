@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { connect } from "react-redux";
 import MetaMaskContext from "./MetaMask";
 
-const MetaMaskButton = ({onWeb3Ready}) => {
+const MetaMaskButton = ({ onWeb3Ready }) => {
     const { web3, accounts, error, awaiting, openMetaMask } = useContext(
         MetaMaskContext,
     );
@@ -52,10 +52,10 @@ const MetaMaskButton = ({onWeb3Ready}) => {
         return <button type="button">className="button is-success" No Wallet 🦊</button>;
     } else {
         // `web3` and `account` loaded 🎉
-        onWeb3Ready();
+        onWeb3Ready(web3);
         return (
             <button type="button" className="button is-success" onClick={handleButtonClick}>
-                <code>{accounts[0]}</code> 🦊 (v: {web3.version.api})
+                <>{accounts[0]}</> 🦊
       </button>
         );
     }
@@ -63,12 +63,12 @@ const MetaMaskButton = ({onWeb3Ready}) => {
 
 
 const mapStateToProps = state => {
-    return {       
+    return {
     };
 };
 const mapDispachToProps = dispatch => {
     return {
-        onWeb3Ready: () => dispatch({ type: "WEB3_AVAILABLE" }),
+        onWeb3Ready: (web3) => dispatch({ type: "WEB3_AVAILABLE", web3: web3 }),
     };
 };
 

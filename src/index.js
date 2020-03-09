@@ -23,10 +23,9 @@ const composeEnhancers =
         }) : compose;
 
 const enhancer = composeEnhancers(
-    applyMiddleware(blackBoxMiddleware,save()),
-    // applyMiddleware(save),
+    applyMiddleware(blackBoxMiddleware, save({ states: ["agreedtandc"] })),
 );
-const store = createStore(reducer,load(), enhancer);
+const store = createStore(reducer, load(), enhancer);
 
 
 ReactDOM.render(

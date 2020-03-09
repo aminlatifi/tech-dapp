@@ -1,5 +1,9 @@
-import db from "./home";
+import home from "./home";
+import contribute from "./contribute";
+import whitelist from "./whitelist";
 
 export default {
-    db
+    home,
+    whitelist,
+    contribute
 };

@@ -1,0 +1,307 @@
+Terms & Conditions (Version 14.08.19) 
+
+1. Introduction 
+The following Terms & Conditions (the “Terms”) apply to the membership with
+Commons Stack Association (the “Association”). Commons Stack Association is
+a Swiss association pursuant to Art. 60 ff. of the Swiss Civil Code. The purpose
+of the Association is to design, to simulate and to build reference iterations
+for novel types of ecosystems that create continuous funding that can be
+collectively governed to support a common good (the “Project”). The end
+product is the codebase for a functional prototype that can be deployed by
+anyone and altered to the future needs of users. The members of the Association
+use the structure of the Association to coordinate the Project iteration
+including all stakeholders. The association does not pursue a commercial purpose
+and does not strive for profit. 
+
+2. Build Phase 
+During the Build Phase, the Association will oversee the creation of modular
+Smart Contract Systems (the “Iterations”) which altogether will compose the
+Commons Stack. The Association will utilize rigorous systems engineering
+processes to produce a series of iterations which can be used to deploy
+purpose-driven tokens for the governance of a continuously funded DAO. The
+design approach to these Smart Contract System modules is iterative, rigorous
+and scientific, ensuring robust and scalable systems for use in the real-world.
+
+The association is collecting membership fees and donations to fund the
+development of the Commons Stack. Each member will receive CSTK Tokens which at
+a later stage can be used by the Token Engineering Community to initiate a Smart
+Contract System to boot-strap their own community out of the first iteration
+that the Commons Stack Association produces. The CSTK Token neither embodies any
+voting rights nor does it entitle the holder to the association's assets. Only
+members that have passed KYC and AML procedures (described in Section 8) will
+receive CSTK Tokens. These Tokens are not transferable as their purpose is to be
+used by Smart Contract Systems as a trusted seed to initialize DAOs using the
+Commons Stack Codebase. The CSTK Token does not represent a membership right in
+the Association. It is neither a prerequisite nor a condition that Members must
+have CSTK tokens, nor are CSTK Token holders automatically members. In addition
+it is possible to donate to the Association, which does not entitle to receive
+any CSTK Tokens. 
+If the Association receives enough membership fees, they will build 5 iterations
+of the Commons Stack Codebase, drastically improving the codebase with every
+iteration. Each codebase can be used to deploy a completely decentralized Smart
+Contract System that is independent of the Commons Stack Association. 
+
+3. Live Phase 
+After the codebase iterations are developed, each iteration can be used to
+create decentralized autonomous organizations (“DAO”). The Live Phase begins
+when an iteration is deployed by a community and is able to receive their chosen
+reserve currency (e.g. DAI). This initial period after the deployment is defined
+as the “Hatch Phase”. During the Hatch Phase, if the Community uses the
+defaults set forth in the iteration’s codebase, all CSTK Token Holders
+(Members) have the opportunity to send a reserve currency (e.g. DAI) to the DAO
+at a rate of one unit of reserve currency for every CSTK Token they hold in
+their address. This renewed payment is necessary in order to receive token of
+the iteration. This Hatch Phase is designed by the Commons Stack Association but
+the Commons Stack Association has no intention of launching any of the Live
+Phases themselves. 
+Multiplier - The amount of CSTK Tokens each member received is determined by how
+much they paid in membership fees to the Commons Stack and when the payment
+occurs. The amount of reserve currency (likely to be Dai or equivalent
+stablecoin) that members are allowed to contribute to each deployed Iteration
+(if the DAO uses the CSTK Token) is defined by the amount of CSTK Tokens each
+member has in his possession. 
+Any member that pays membership fees to the Commons Stack Association before the
+Association receives the minimum funding goal for Iteration #1 will receive a
+2.5x multiplier. As in, if there is a contribution of 10,000 DAI, the member
+receives 25,000 CSTK Tokens. Any membership fee after that but before we reach
+our funding goal for Iteration #2 will receive a 2x multiplier. As in, if there
+is a membership fee of 10,000 DAI, the member receives 20,000 CSTK Tokens. Any
+membership fee after that but before we reach our goal for Iteration #3 will
+receive a 1.5x multiplier. As in, if there is a membership fee of 10,000 DAI,
+the member receives 15,000 CSTK Tokens. Any membership fee after that but before
+we reach our goal for Iteration #4 will receive a 1.25x multiplier. As in, if
+there is a membership fee of 10,000 DAI, the member receives 12,500 CSTK Tokens.
+And anyone who pays membership fees after that will receive CSTK Tokens at a 1
+for 1 rate. As in, if there is a membership fee of 10,000 DAI, the member
+receives 10,000 CSTK Tokens. 
+Advisers and Commons Stack Core Team Members that contribute before August 23,
+2019 will get a 3x multiplier. As in, if there is a membership fee of 10,000
+DAI, the member receives 30,000 CSTK Tokens. 
+Advisers and Commons Stack Core Team Members that contribute to the Commons
+Stack Prelaunch Giveth Campaign, and have their funds used to full fill payments
+for work done before the funding has met the minimum funding goal for iteration
+1 will get a 4x multiplier. As in, if there is a contribution of 10,000 DAI, the
+contributor will be awarded 40,000 CSTK Tokens. 
+Each Advisor to the Commons Stack Association will receive 10,000 CSTK Tokens
+for their work reviewing and advising on the design and execution of the Commons
+Stack Codebase and funding goal. 
+Members of the Association as well as the independent contractors that built the
+Smart Contract Systems will be given access to participate in this Hatch Phase.
+Others are not allowed to participate in this stage. CSTK Tokens are not
+transferable and it is a violation of these terms of service to transfer them by
+any means to other members or third parties. The Commons Stack Association has
+the right to revoke membership and burn CSTK Tokens owned by any member if there
+is any violation of these terms of service. 
+
+4. Duration of the Build Phase 
+The Build Phase shall end on or before September 2022. The Association reserves
+the right to change the duration of the Build Phase for any reason, including
+the unavailability of raising enough funds in order to develop the Smart
+Contract Systems or any other unforeseen procedural or security issues. 
+
+5. Membership rights 5.1 Voting rights 
+Each individual member has one vote at the general assembly of the Association
+(the “Individual Member”). 
+
+5.2 Possibility to send tokens into a Token Bonding Curve during a Live Phase 
+As stated in section 3, each CSTK Token holder has the possibility to send
+tokens to the Smart Contract System during the Hatch Phase as a maximum the same
+amount as they own CSTK Token. In return, for this renewed payment only they
+shall receive ‘ABC’ Tokens. Members of the Association as well as the
+parties that built the Smart Contract Systems will be given access to this Hatch
+Phase. It is at the discretion of each DAO to use the Commons Stack Member
+Tokens as a whitelist for the hatch phase. The members of the Association are
+not entitled to receive Tokens without a renewed payment during the Live Phase.
+
+
+5.3 Further rights 
+The members of the Association shall have all rights, which the Art. 60 ff. of
+the Swiss Civil Code provides. 
+
+5.4 Publication on the Association’s website 
+Each member has the right to be named as a Patron on the Association’s
+website. Without your explicit consent, the Association will not publish your
+name on the website. 
+
+6. Membership obligation 
+Each member has to pay the membership fee and follow these terms and conditions.
+Members may be excluded by a decision by the Board if they do not fulfill the
+financial obligations after two written reminders. Liability incurred by the
+Association is limited exclusively to the Association's funds. Any personal
+liability of its members is expressly excluded. 
+
+7. Application & confirmation of membership 
+Applications for membership must be addressed to the board of the Association.
+The board decides on the admission of new members and informs the general
+assembly about it. The membership is acquired by acceptance of the application
+by the board and the payment of the membership fee. Furthermore, the acceptance
+of the application is subject to a successful KYC and AML process. A rejection
+does not have to be justified. 
+As soon as the board accepts your application and the membership is paid, you
+will receive an email with a confirmation about the membership. 
+
+8. Registration and KYC/AML Policy 
+As part of the application, in order to receive CSTK Tokens and also to
+participate later in Hatch Phases, any new member will need to provide full
+KYC/AML information and fulfill a registration process through the
+Association’s website. The Association will not publish any identifying
+information related to a member without the prior written consent of the member.
+Members may be contacted by email by the Association regarding their membership.
+
+New members have to investigate for themselves if they are eligible to
+participate in the Association. The Association may at any time refund
+contributions from any jurisdiction and delete the account and information
+provided from a potential contributor. The Association has a strict KYC/AML
+policy complying with international standards. Any suspicious transaction and
+any suspicious facts related to members will be reported to the relevant
+authorities without any further notice. 
+A potential member not willing to participate in the KYC/AML process or a
+potential member not accepted in the KYC/AML process will not be accepted as a
+member of the Association. 
+
+8.1 The KYC process is set up as follows: 
+- If the amount you send times the current multiplier is less than 5’000 CHF
+then we need your name, Ethereum address and residency - If the amount you send
+times the current multiplier is between 5’000 and 15’000 CHF then you need
+to submit a photo of your passport - If the amount you send times the current
+multiplier is between 15’000 and 50’000 CHF then you need to take a photo of
+your passport and submit proof of residency - If the amount you send times the
+current multiplier is between 50’000 and 100’000 CHF then you need to take a
+photo of your passport, a selfie with your ID and submit proof of residency 
+- If the amount you send times the current multiplier is above 100’000 CHF
+then you need to take a photo of your passport, a selfie with your ID and submit
+proof of residency and have a video call with our team. 
+We expressly reserve the right to change the above mentioned requirements at any
+time without any further notice. 
+We retain the right to reject membership applications for any reason, but if the
+membership application is incomplete, or we believe the member has submitted
+multiple applications, or the member is a resident of the USA, Iran, China
+(residents only), Afghanistan, Cuba, Democratic People's Republic of Korea,
+Ethiopia, Guyana, Irak, Iran, Sri Lanka, Sudan, Syria, Trinidad and Tobago,
+Vanuatu and Yemen, it is very likely that the membership will be denied. 
+
+9. The membership fee is non-refundable Paying the membership fee is final and
+the member has no right to ask for refund. 
+The member acknowledges that neither the Association nor any related party of
+the Association is required to provide a refund for any reason and that the
+member will not receive money or other compensation back. 
+
+10. Risks 
+Becoming a member of the Association may offer an opportunity for playing an
+active role during the Build Phase in the development of a new ecosystem and for
+future capital gains in the Live Phase but also entail a high degree of business
+and financial risks, including the possibility of a complete loss of the paid
+fees. 
+
+10.1 Financing 
+The Association requires sufficient capital to establish its Project. The
+Association intends to raise these funds through the membership fees. There are
+no plans to raise loan capital from third parties. The amount of funds actually
+raised through the membership fee is not known. Accordingly, there is the risk
+of a capital shortfall of the Association and we could not pursue our
+objectives. If the Association is unable to obtain financing, the Association
+may be required to significantly delay or discontinue the Project. 
+
+10.2 Smart Contract Systems 
+The Association is, subject to general macro-economic developments such as
+economic growth and inflation. Further, since the blockchain technology and the
+related industry are still relatively new and under development, the related
+economic developments are relatively uncertain. There is no guarantee that the
+Association is able to build a fully functional iteration of the Smart Contract
+System and therefore the Live Phase may not happen for any iteration. It is not
+yet possible to predict the exact developments of the blockchain technology and
+to guarantee its functionalities and further evolutions. 
+
+10.3 Cryptocurrencies 
+The value of cryptocurrencies is volatile and exposed to significant risks. The
+members are allowed to pay their membership fees in cryptocurrencies. The value
+of cryptocurrencies may change significantly (even on an intraday basis).
+Accordingly, the Association may incur exchange rate losses. 
+
+10.4 Regulatory risks & changes in the supervisory practice 
+Blockchain technology is in an early stage and might undergo significant changes
+and regulatory actions by the Swiss government or other authorities, which may
+result in the illegality of certain transactions or the iteration of controls.
+Technology relating to blockchain, including smart contracts and tokens, is
+still at an early stage and best practices are still to be determined and
+implemented. These technologies are likely to undergo significant changes in the
+future. Technological advances in smart contracts, cryptography, code breaking
+or quantum computing, etc. may pose a risk to its security. The functioning of a
+blockchain relies on open-source software. Developers of such open-source
+software may introduce weaknesses and programming errors into the open-source
+software or may stop developing the open-source software (potentially at a
+critical stage where a security update is required), exposing smart contracts
+and tokens to weaknesses, programming errors and threats of fraud, theft, and
+cyber-attacks. There is no central body (e.g. a government agency) overseeing
+the development of technology relating to the blockchain technology and its
+functioning, as well as further improvements of such functioning (e.g. ability
+to increase the number of transactions, reduce processing time, reduce
+transaction fees, implement security updates), relies on the collaboration and
+consensus of various stakeholders, among others, developers enhancing the
+open-source software related to smart contracts and cryptocurrencies or
+so-called "miners" facilitating the processing of blockchain transactions. 
+There is a risk that the existing legal regulations may be amended and/or new
+legal regulations could be introduced by the government. Any forthcoming
+regulatory actions may result in the illegality of certain blockchain
+transactions or the iteration of controls relating to the trading (and therefore
+liquidity) of certain or even all tokens recorded and traded on a blockchain.
+Our intended Project may be restricted or could become impossible. 
+
+11. Important Notice
+The membership in the Association is not a security and gives no right to
+dividend payments, interest payments, or participation in the liquidation
+procedure. The membership fee is non-refundable and all raised funds belong to
+the Association and the Association is not obliged to pay anything back to the
+members. By becoming a member, you expressly acknowledge and represent that you
+have carefully reviewed these Terms & Conditions and fully understand the risks,
+costs, and benefits of the membership and agree to be bound by these Terms. 
+You further represent and warrant that, to the extent permitted by law, you are
+authorized to become a member of the Association in your relevant jurisdiction,
+are of a legal age to be bound 
+by these Terms & Conditions, and will not hold the Association, and the board
+members, directors, agents, joint ventures, employees and suppliers of the
+Association, now or in the future liable for any losses or any special,
+incidental or consequential damages arising out of, or in any way connected to
+the membership in the Association. 
+Becoming a member carries with it a number of risks. Prior to becoming a member
+of the Association, you should carefully consider the risks listed here and, to
+the extent necessary, consult an appropriate lawyer, accountant or tax
+professional. If any of the following risks are unacceptable to you, you should
+not become a member of the Association. 
+This document is not a solicitation for investment and does not pertain in any
+way to an offering of securities in any jurisdiction. Individuals, businesses,
+and other organizations should carefully weigh the risks, costs, and benefits of
+becoming a member of the Association. 
+
+12. Miscellaneous 
+
+12.1 Force Majeure 
+Neither members nor the Association will be liable to the other for any failure
+to fulfill obligations caused by circumstances outside its reasonable control. 
+
+12.2 Third-party claims 
+These terms will not create any right or cause of action for any third party,
+including your affiliates. The Association will not be liable for any third
+party claims against you, or your affiliates. 
+
+12.3. Complete Agreement 
+These Terms sets forth the entire understanding between each member and the
+Association with respect to become a member of the association. 
+
+12.4 Severability 
+You and the Association agree that if any portion of these Terms & Conditions is
+found illegal or unenforceable, in whole or in part, such provision shall, as to
+such jurisdiction, be ineffective solely to the extent of such determination of
+invalidity or unenforceability without affecting the validity or enforceability
+thereof in any other manner or jurisdiction and without affecting the remaining
+provisions of the Terms & Conditions, which shall continue to be in full force
+and effect. 
+
+12.5 Applicable law & Dispute Resolution 
+The Association is organized under Swiss law. Swiss material law is applicable.
+All disputes, controversies or claims arising out of, relating to, or in
+connection with the Terms, or the breach thereof, shall be settled by the
+competent court of Zug. 
+
+Commons Stack Association, Zug, Switzerland. © Copyright 2019 Commons Stack
+Association. All Rights Reserved. 

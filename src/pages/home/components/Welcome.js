@@ -1,19 +1,9 @@
 import React from "react";
-// import { Redirect } from "react-router-dom";
-import styled from "styled-components";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import TandC from "./TandC";
-import MetaMaskButton from "../../../components/MetaMaskButton";
 
 const Comp = ({ agreed, onSetAgreed }) => {
 
-    // import styled from 'styled-components'
-    const Button = styled.button`
-background: palevioletred;
-border-radius: 3px;
-border: none;
-color: white;
-`
     //     const TomatoButton = styled(Button)`
     // background: tomato;
     // `
@@ -22,13 +12,16 @@ color: white;
             <div class="container">
                 <h1 class="title">Welcome to the TECH token Contribution page</h1>
                 <h2 class="subtitle">
-                    Please connect to <strong>Metamask</strong> to continue. Click the button below...
-      </h2>
-      <MetaMaskButton/>
+                    <Link
+                        className=" button is-success is-outlined is-large"
+                        to={{
+                            pathname: "/contribute"
+                        }}
+                    >Start the contribution DApp</Link>
+                </h2>
+              
             </div>
         </section>
-        <TandC />
-        {/* <TomatoButton onClick={onSetAgreed}>click to agree</TomatoButton> */}
     </>);
 };
 
@@ -36,7 +29,7 @@ color: white;
 const mapStateToProps = state => {
 
     return {
-        agreed: state.agreed,
+        // agreed: state.agreed,
     };
 };
 
