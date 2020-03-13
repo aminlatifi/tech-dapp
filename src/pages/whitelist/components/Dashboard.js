@@ -7,20 +7,12 @@ import sigUtil from "eth-sig-util";
 
 const Comp = ({ web3available }) => {
 
-    const { web3, accounts, error, awaiting, openMetaMask } = useContext(
+    const { web3 } = useContext(
         MetaMaskContext,
     );
 
     const [isWhitelistAdmin, setIsWhitelistAdmin] = React.useState(false);
     const [loginSignature, setLoginSignature] = React.useState(false);
-
-    // useEffect(() => {
-    //     if (web3) {
-    //         util.isWhitelistAdmin(web3.currentProvider.selectedAddress).then((iswl) => {
-    //             setIsWhitelistAdmin(iswl);
-    //         });
-    //     }
-    // },[web3]);
 
     useEffect(() => {
         if (web3) {

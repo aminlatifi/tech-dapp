@@ -1,6 +1,6 @@
 import React from 'react';
 import pages from "./pages";
-import { BrowserRouter, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./sass/style.sass";
 import MetaMaskContext from "./components/MetaMask";
 import Navigation from "./components/Navigation";

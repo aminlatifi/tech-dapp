@@ -1,13 +1,13 @@
-import React, { useContext } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import MetaMaskContext from "../../../components/MetaMask";
+// import MetaMaskContext from "../../../components/MetaMask";
 import tandcData from "../../../assets/tandc.json";
 
 const Comp = ({ web3available, agreedtandc, onSetAgreedtandc }) => {
 
-    const { web3, accounts, error, awaiting, openMetaMask } = useContext(
-        MetaMaskContext,
-    );
+    // const { web3, accounts, error, awaiting, openMetaMask } = useContext(
+    //     MetaMaskContext,
+    // );
 
     const [agreetandc, setAgreetandc] = React.useState(false);
     const [box2, setBox2] = React.useState(false);

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import MetaMaskButton from "./MetaMaskButton";
 import csLogo from "../assets/headerlogo.svg";
 
@@ -22,8 +22,8 @@ const Comp = ({ web3available, agreedtandc, onSetAgreedtandc }) => {
                         <div class="navbar-end">
                             <div class="tabs is-right">
                                 <ul>
-                                    <li><a href="">About contribution</a></li>
-                                    <li class="is-active"><a>Contribution</a></li>
+                                    <li><span >About contribution</span></li>
+                                    <li class="is-active"><span>Contribution</span></li>
                                     <li class="control"><MetaMaskButton /></li>
                                 </ul>
                             </div>

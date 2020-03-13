@@ -1,4 +1,3 @@
-// MetaMaskButton.js
 import React, { useContext } from "react";
 import { connect } from "react-redux";
 import MetaMaskContext from "./MetaMask";
@@ -7,10 +6,6 @@ const MetaMaskButton = ({ onWeb3Ready }) => {
     const { web3, accounts, error, awaiting, openMetaMask } = useContext(
         MetaMaskContext,
     );
-
-    // function handleButtonClick() {
-    //     alert(`Web3 (${web3.version}) is enabled`);
-    // }
 
     if (error && error.message === "MetaMask not installed") {
         return (
@@ -49,13 +44,13 @@ const MetaMaskButton = ({ onWeb3Ready }) => {
       </button>
         );
     } else if (accounts.length === 0) {
-        return <button type="button">className="button is-success" No Wallet 🦊</button>;
+        return <button type="button">className="button is-success" No Wallet</button>;
     } else {
         // `web3` and `account` loaded 🎉
         onWeb3Ready(web3, accounts[0]);
         return (
             <button type="button" className="button is-success">
-                <>{accounts[0]}</> 🦊
+                <>{accounts[0]}</>
       </button>
         );
     }

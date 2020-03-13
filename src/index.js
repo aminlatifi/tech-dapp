@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { save, load } from "redux-localstorage-simple"
+import { save } from "redux-localstorage-simple"
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware, compose } from "redux";
 

@@ -10,7 +10,7 @@ const coinLogos = [
 
 const Comp = ({ agreedtandc, account, balances, getBalancesFor }) => {
 
-    const { web3, accounts, error, awaiting, openMetaMask } = useContext(
+    const { accounts } = useContext(
         MetaMaskContext,
     );
 
