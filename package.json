@@ -21,6 +21,7 @@
         "react-scripts": "3.0.1",
         "redux": "^4.0.4",
         "redux-localstorage-simple": "^2.1.6",
+        "semantic-release": "^17.0.4",
         "styled-components": "^4.3.2",
         "truffle-contract": "^4.0.28",
         "web3": "^1.2.1"
