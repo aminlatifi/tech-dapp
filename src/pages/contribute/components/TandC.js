@@ -1,6 +1,4 @@
 import React, { useContext } from "react";
-// import { Redirect } from "react-router-dom";
-import styled from "styled-components";
 import { connect } from "react-redux";
 import MetaMaskContext from "../../../components/MetaMask";
 import tandcData from "../../../assets/tandc.json";

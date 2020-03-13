@@ -10,10 +10,8 @@ import { createStore, applyMiddleware, compose } from "redux";
 import reducer from './store/techdapp';
 
 
-import { blackBoxMiddleware } from '@oqton/redux-black-box';
-
-// const store = createStore(techdappReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()), applyMiddleware(blackBoxMiddleware));
-
+// import { blackBoxMiddleware } from '@oqton/redux-black-box';
+import { createBlackBoxMiddleware } from '@oqton/redux-black-box';
 
 const composeEnhancers =
     typeof window === 'object' &&
@@ -23,9 +21,11 @@ const composeEnhancers =
         }) : compose;
 
 const enhancer = composeEnhancers(
-    applyMiddleware(blackBoxMiddleware, save({ states: ["agreedtandc"] })),
+    applyMiddleware(createBlackBoxMiddleware([['web3']]), save({ states: ["agreedtandc"] })),
 );
-const store = createStore(reducer, load(), enhancer);
+
+// const store = createStore(reducer, load(), enhancer);
+const store = createStore(reducer, enhancer);
 
 
 ReactDOM.render(

@@ -8,9 +8,9 @@ const MetaMaskButton = ({ onWeb3Ready }) => {
         MetaMaskContext,
     );
 
-    function handleButtonClick() {
-        alert(`Web3 (${web3.version}) is enabled`);
-    }
+    // function handleButtonClick() {
+    //     alert(`Web3 (${web3.version}) is enabled`);
+    // }
 
     if (error && error.message === "MetaMask not installed") {
         return (
@@ -52,9 +52,9 @@ const MetaMaskButton = ({ onWeb3Ready }) => {
         return <button type="button">className="button is-success" No Wallet 🦊</button>;
     } else {
         // `web3` and `account` loaded 🎉
-        onWeb3Ready(web3);
+        onWeb3Ready(web3, accounts[0]);
         return (
-            <button type="button" className="button is-success" onClick={handleButtonClick}>
+            <button type="button" className="button is-success">
                 <>{accounts[0]}</> 🦊
       </button>
         );
@@ -68,7 +68,7 @@ const mapStateToProps = state => {
 };
 const mapDispachToProps = dispatch => {
     return {
-        onWeb3Ready: (web3) => dispatch({ type: "WEB3_AVAILABLE", web3: web3 }),
+        onWeb3Ready: (web3, account) => dispatch({ type: "WEB3_AVAILABLE", web3, account }),
     };
 };
 
