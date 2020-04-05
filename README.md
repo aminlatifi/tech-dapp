@@ -1,8 +1,5 @@
-# Commons Stack Contribution Dapp
+# :seedling: CSTK token sale monorepo :seedling:
 
-Dapp for contributions
-
-## Auto-deploys
-
-Each commit will be built to https://tech-dapp.netlify.com/
-
+This repository contains:
+- app - the React app for the token sale
+- solidity - the contracts for the token sale

@@ -1,0 +1,36 @@
+{
+  "name": "@tech-dapp/solidity",
+  "version": "0.1.0",
+  "description": "Smart contracts and build environment for CSTK token sale",
+  "private": true,
+  "scripts": {
+    "build": "buidler compile",
+    "node": "npx buidler node",
+    "test": "buidler typechain && buidler test",
+    "clean": "rm -rf build cache"
+  },
+  "devDependencies": {
+    "@nomiclabs/buidler": "^1.2.0",
+    "@nomiclabs/buidler-ethers": "^1.2.0",
+    "@nomiclabs/buidler-truffle5": "^1.2.0",
+    "@nomiclabs/buidler-waffle": "^1.2.0",
+    "@nomiclabs/buidler-web3": "^1.2.0",
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^7.0.2",
+    "@types/node": "^13.11.0",
+    "@typescript-eslint/eslint-plugin": "^2.26.0",
+    "@typescript-eslint/parser": "^2.26.0",
+    "buidler-typechain": "^0.0.5",
+    "chai": "^4.2.0",
+    "ethereum-waffle": "^2.4.0",
+    "ethers": "^4.0.46",
+    "ts-generator": "^0.0.8",
+    "ts-node": "^8.8.1",
+    "typechain": "^1.0.5",
+    "typechain-target-ethers": "^1.0.4",
+    "typechain-target-truffle": "^1.0.2",
+    "typechain-target-web3-v1": "^1.0.4",
+    "typescript": "^3.8.3",
+    "web3": "^1.2.6"
+  }
+}
