@@ -40,7 +40,7 @@ const MetaMaskButton = ({ onWeb3Ready }) => {
     } else if (!web3) {
         return (
             <button type="button" className="button is-success" onClick={openMetaMask}>
-                Please open and allow MetaMask
+                Connect Wallet
       </button>
         );
     } else if (accounts.length === 0) {

@@ -18,14 +18,17 @@ const Comp = ({ web3available, agreedtandc, onSetAgreedtandc }) => {
                             <span></span>
                         </span>
                     </div>
-                    <div id="navbarMenu" class="navbar-menu">
+
+                    <div id="navMenu" class="navbar-menu">
+                        <div class="navbar-start">
+                            <div class="navbar-item"><span >About contribution</span></div>
+                            <div class="navbar-item"><span>Contribution</span></div>
+                        </div>
+
+
                         <div class="navbar-end">
                             <div class="tabs is-right">
-                                <ul>
-                                    <li><span >About contribution</span></li>
-                                    <li class="is-active"><span>Contribution</span></li>
-                                    <li class="control"><MetaMaskButton /></li>
-                                </ul>
+                                <div class="navbar-item"><MetaMaskButton /></div>
                             </div>
                         </div>
 

@@ -4,6 +4,7 @@ import ERC20Contract from 'erc20-contract-js';
 
 const initialState = {
     agreedtandc: false,
+    showtandc: false,
     web3: null,
     balances: {},
 };
@@ -16,15 +17,18 @@ const reducer = (state = initialState, action) => {
     // const newState = { ...state };
     console.log(`reducer ${action.type}`, state);
     switch (action.type) {
-        case "AGREE_TANDC":
+        case "SET_SHOW_TANDC":
             return {
                 ...state,
-                // call: new PromiseBlackBox(
-                //     () => getAvailableCurrencies()
-                //         .then(res => ({ type: "LOAD_AVAILABLE_CURRENCIES_SUCCESS", res }))
-                //         .catch(e => ({ type: "LOAD_AVAILABLE_CURRENCIES_FAIL", e }))
-                // )
-                agreedtandc: true
+                showtandc: action.value
+            }
+        case "AGREE_TANDC":
+            debugger;
+            return {
+                ...state,
+                agreedtandc: true,
+                showtandc: false,
+                tandcsignature: action.signature
             };
         case "WEB3_AVAILABLE":
             return {
@@ -47,14 +51,20 @@ const reducer = (state = initialState, action) => {
                 )
             }
         case "GET_BALANCES_FOR_ADDRESS_SUCCESS":
+            delete state.BB_GET_BALANCES_FOR_ADDRESS;
+            const addressBalances = action.res.map((item)=>{
+                item.balanceFormatted = parseFloat(state.web3.utils.fromWei(item.balance,"ether")).toFixed(2);
+                return item;
+            })
             return {
                 ...state,
                 balances: Object.assign({}, state.balances, {
-                    [action.address]: action.res
+                    [action.address]: addressBalances
                 })
             }
 
         case "GET_BALANCES_FOR_ADDRESS_FAIL":
+            delete state.BB_GET_BALANCES_FOR_ADDRESS;
             state.balances[action.address] = state.balances[action.address].map((coin) => { coin.status = "error fetching"; return coin });
             return state;
         default:
@@ -62,11 +72,11 @@ const reducer = (state = initialState, action) => {
     }
 }
 
-const getBalances = (web3, address, coins) => {
-    return Promise.all(coins.map((coin) => {
+const getBalances = async (web3, address, coins) => {
+    return Promise.all([...coins.map((coin) => {
         const erc20Contract = new ERC20Contract(web3, coin.contractaddress);
-        return erc20Contract.balanceOf(address).call().then((balance) => { return { ...coin, balance: web3.utils.fromWei(balance, "ether") } });
-    }))
+        return erc20Contract.balanceOf(address).call().then((balance) => { return { ...coin, balance: balance } });
+    }), { symbol: "ETH", balance: await web3.eth.getBalance(address) }])
 }
 
 export default reducer;

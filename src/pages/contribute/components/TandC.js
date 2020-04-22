@@ -1,38 +1,83 @@
-import React from "react";
+import React, { useContext } from "react";
 import { connect } from "react-redux";
-// import MetaMaskContext from "../../../components/MetaMask";
+import MetaMaskContext from "../../../components/MetaMask";
 import tandcData from "../../../assets/tandc.json";
+import "./TandC.css";
 
-const Comp = ({ web3available, agreedtandc, onSetAgreedtandc }) => {
+const Comp = ({ web3available, agreedtandc, onSetAgreedtandc, setShowTandC }) => {
 
-    // const { web3, accounts, error, awaiting, openMetaMask } = useContext(
-    //     MetaMaskContext,
-    // );
+    const { web3, accounts, error, awaiting, openMetaMask } = useContext(
+        MetaMaskContext,
+    );
+
+    console.log("accounts", accounts);
 
     const [agreetandc, setAgreetandc] = React.useState(false);
-    const [box2, setBox2] = React.useState(false);
     const [box3, setBox3] = React.useState(false);
     const [enableSubmit, setEnableSubmit] = React.useState(false);
 
+    const [signError, setSignError] = React.useState();
+
+
     React.useEffect(() => {
-        setEnableSubmit(agreetandc && box2 && box3);
-        console.log("Check all ??", agreetandc ? "true" : "false", box2 ? "true" : "false", box3 ? "true" : "false", enableSubmit ? "true" : "false");
-    }, [setEnableSubmit, enableSubmit, agreetandc, box2, box3]);
+        setEnableSubmit(agreetandc && box3);
+        console.log("Check all ??", agreetandc ? "true" : "false", box3 ? "true" : "false", enableSubmit ? "true" : "false");
+    }, [setEnableSubmit, enableSubmit, agreetandc, box3]);
+
+
+    if (!accounts || !accounts[0]) {
+        return (<div>Waiting for web3 provider</div>);
+    }
+
+    const signIt = (message) => {
+
+        const msgParams = [
+            {
+                type: 'string',      // Any valid solidity type
+                name: 'Commons Stack signature',     // Any string label you want
+                value: message  // The value to sign
+            },
+        ];
+        const from = web3.currentProvider.selectedAddress;
+
+        web3.currentProvider.sendAsync({
+            method: 'eth_signTypedData',
+            params: [msgParams, from],
+            from: from,
+        }, function (err, result) {
+            debugger;
+            if (err) {
+                return setSignError("Signature failed.");
+            }
+            // if (err) return console.error(err)
+            if (result.error) {
+                return setSignError(`Signature error. ${result.error.message}`);
+                // return console.error()
+            }
+
+            if (!result.result) {
+                return setSignError("No signature received.");
+            }
+
+            onSetAgreedtandc(result.result);
+
+        });
+    }
 
 
     return (
         <>
-            <div className="is-active">
+            <div className="tandc modal is-active">
                 <div className="modal-background"></div>
                 <div className="modal-card">
                     <header className="modal-card-head">
                         <p className="modal-card-title">Terms And Conditions</p>
-                        {/* <button className="delete" aria-label="close"></button> */}
+                        <button className="delete" onClick={() => { setShowTandC(false) }} aria-label="close"></button>
                     </header>
                     <section className="modal-card-body">
-                        <pre>
+                        <p class="tandccontent">
                             {tandcData.data}
-                        </pre>
+                        </p>
 
                         <div className="field">
 
@@ -50,7 +95,7 @@ const Comp = ({ web3available, agreedtandc, onSetAgreedtandc }) => {
                       </label>
                             </div>
                         </div>
-
+                        {/* 
                         <div className="field">
                             <div className="control">
                                 <label className="checkbox">
@@ -63,7 +108,7 @@ const Comp = ({ web3available, agreedtandc, onSetAgreedtandc }) => {
                                     and to this
                             </label>
                             </div>
-                        </div>
+                        </div> */}
 
                         <div className="field">
                             <div className="control">
@@ -74,13 +119,25 @@ const Comp = ({ web3available, agreedtandc, onSetAgreedtandc }) => {
                                         checked={box3}
                                         onChange={(e) => { setBox3(e.target.checked) }}
                                     />
-                                    <span>I agree to cryptographically sign a copy by signing the IPFS hash {tandcData.hash}</span>
+                                    <span>I agree to cryptographically sign a copy of these Terms and Conditions by signing its IPFS hash <a target="_new" href={`https://ipfs.io/ipfs/${tandcData.hash}`}>{tandcData.hash}</a></span>
                                 </label>
                             </div>
                         </div>
                     </section>
                     <footer className="modal-card-foot">
-                        <button disabled={!enableSubmit} onClick={onSetAgreedtandc} className="button is-success">Sign these T&C with my wallet</button>
+                        <div class="tile is-ancestor">
+                            <div class="tile is-vertical ">
+                                <span className="is-size-7">Be sure to connect the right wallet which will be whitelisted and from which you will make contribution</span>
+                                {signError && (
+                                    <p class="help is-danger">{signError}</p>
+                                )}
+                            </div>
+                            <div class="tile is-vertical ">
+                                <div class="">
+                                    <button disabled={!enableSubmit} onClick={() => { signIt(`I agree with Terms and Conditions corresponding to IPFS hash ${tandcData.hash}`) }} className="button is-pulled-right is-outlined is-success">Sign with my wallet</button>
+                                </div>
+                            </div>
+                        </div>
                     </footer>
                 </div>
             </div >
@@ -98,7 +155,8 @@ const mapStateToProps = state => {
 
 const mapDispachToProps = dispatch => {
     return {
-        onSetAgreedtandc: () => dispatch({ type: "AGREE_TANDC" }),
+        onSetAgreedtandc: (signature) => dispatch({ type: "AGREE_TANDC", signature }),
+        setShowTandC: (value) => dispatch({ type: "SET_SHOW_TANDC", value })
     };
 };
 
