@@ -1,0 +1,82 @@
+@import '../../../sass/_colors'
+
+.tandc
+    border-radius: 5px
+
+    input
+        margin-right: 1em
+        color: blue
+
+    .checkbox:hover, .radio:hover
+        color: white
+
+    .modal-card
+        position: absolute
+        width: 50rem
+        height: 38rem
+        top: 10rem
+        left: 50%
+        transform: translateX(-50%)
+
+        background-color: $element-background
+        border-radius: 5px
+
+    .modal-card-head, .modal-card-body, .modal-card-foot
+        background-color: $element-background
+        border-bottom: none
+        border-top: none
+        padding: 2rem 2.5rem
+
+    .modal-card-head, .modal-card-foot
+        height: 5rem
+
+    .modal-card-body
+        width: calc(100% - 20px)
+
+        p, .checkbox, .checkbox a
+            font-size: 16px
+            line-height: 19px
+            color: $white
+            mix-blend-mode: normal
+            opacity: 0.6
+            text-align: justify
+
+    .modal-card-title
+        font-size: 20px
+        color: $white
+        text-align: left
+
+    .is-divider
+        height: 1rem
+        background-color: $divider-color
+
+    .level-left
+        padding-left: 0.5rem
+        max-width: 25rem
+
+    .fa-info-circle
+        color: $white
+        mix-blend-mode: normal
+        opacity: 0.4
+
+    .is-size-7
+        padding-left: 0.5rem
+        text-align: justify
+        color: $white
+        mix-blend-mode: normal
+        opacity: 0.4
+
+    ::-webkit-scrollbar
+        width: 0.5rem
+
+    ::-webkit-scrollbar-track
+        border-radius: 1rem
+        margin: 2rem
+        background: $scrollbar-track-color
+
+    ::-webkit-scrollbar-thumb
+        background: $scrollbar-thumb-color
+        border-radius: 1rem
+
+.tandccontent
+    white-space: pre-line
