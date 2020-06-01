@@ -25,24 +25,24 @@ const Comp = ({ web3available, agreedtandc, onSetAgreedtandc }) => {
   }, [location.pathname]);
 
   return (
-    <div class="hero-head">
-      <nav class="navbar">
-        <div class="container">
-          <div class="navbar-brand">
-            <a class="navbar-item" href="../">
+    <div className="hero-head">
+      <nav className="navbar">
+        <div className="container">
+          <div className="navbar-brand">
+            <a className="navbar-item" href="../">
               <img src={csLogo} alt="Logo" />
             </a>
-            <span class="navbar-burger burger" data-target="navbarMenu">
+            <span className="navbar-burger burger" data-target="navbarMenu">
               <span></span>
               <span></span>
               <span></span>
             </span>
           </div>
 
-          <div id="navMenu" class="navbar-menu">
-            <div class="navbar-start">
+          <div id="navMenu" className="navbar-menu">
+            <div className="navbar-start">
               <div
-                class={
+                className={
                   activeNavItem === 1 ? "navbar-item is-active" : "navbar-item"
                 }
               >
@@ -51,7 +51,7 @@ const Comp = ({ web3available, agreedtandc, onSetAgreedtandc }) => {
                 </Link>
               </div>
               <div
-                class={
+                className={
                   activeNavItem === 2 ? "navbar-item is-active" : "navbar-item"
                 }
               >
@@ -60,7 +60,7 @@ const Comp = ({ web3available, agreedtandc, onSetAgreedtandc }) => {
                 </Link>
               </div>
               <div
-                class={
+                className={
                   activeNavItem === 3 ? "navbar-item is-active" : "navbar-item"
                 }
               >
@@ -68,9 +68,9 @@ const Comp = ({ web3available, agreedtandc, onSetAgreedtandc }) => {
               </div>
             </div>
 
-            <div class="navbar-end">
-              <div class="tabs is-right">
-                <div class="navbar-item">
+            <div className="navbar-end">
+              <div className="tabs is-right">
+                <div className="navbar-item">
                   <MetaMaskButton />
                 </div>
               </div>

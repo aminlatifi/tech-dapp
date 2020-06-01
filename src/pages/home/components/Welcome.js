@@ -8,10 +8,10 @@ const Comp = ({ agreed, onSetAgreed }) => {
     // background: tomato;
     // `
     return (<>
-        <section class="section">
-            <div class="container">
-                <h1 class="title">Welcome to the TECH token Contribution page</h1>
-                <h2 class="subtitle">
+        <section className="section">
+            <div className="container">
+                <h1 className="title">Welcome to the TECH token Contribution page</h1>
+                <h2 className="subtitle">
                     <Link
                         className=" button is-success is-outlined is-large"
                         to={{

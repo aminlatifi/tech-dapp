@@ -17,6 +17,7 @@ const Comp = ({ agreedtandc, showtandc, account, balances, getBalancesFor, setSh
         MetaMaskContext,
     );
 
+    // TODO: this should be moved to the store IMO
     React.useEffect(() => {
         if (accounts && accounts[0]) {
             getBalancesFor(accounts[0]);
@@ -26,28 +27,30 @@ const Comp = ({ agreedtandc, showtandc, account, balances, getBalancesFor, setSh
     // balance in DAI
     const daiBalance = balances && balances[account] && balances[account].filter((coin) => {
         return (coin.symbol === "DAI")
-    }).map((coin)=>{
+    }).map((coin) => {
         const logo = coinLogos.find((coinIcon) => { return coinIcon.symbol === coin.symbol });
         return (
+
             <div key={coin.symbol} className="title level">
-            <div className="level-left">Total available balance</div>
-            <div className="level-right has-text-right">{coin.status || coin.balanceFormatted} {coin.symbol} <span class="icon has-text-light">&nbsp;<img src={logo.src} alt={coin.symbol} /></span></div>
-        </div>
+                <div className="level-left">Total available balance</div>
+                <div className="level-right has-text-right">{coin.status || coin.balanceFormatted} {coin.symbol} <span className="icon has-text-light">&nbsp;<img src={logo.src} alt={coin.symbol} /></span></div>
+            </div>
+
         )
     })
-    
+
     // all other known balances - except DAI
-    const otherBalances = balances && balances[account] && balances[account].reduce((accum,coin) => {
+    const otherBalances = balances && balances[account] && balances[account].reduce((accum, coin) => {
         if (coin.symbol === "DAI") return accum;
         const logo = coinLogos.find((coinIcon) => { return coinIcon.symbol === coin.symbol });
-        accum.push(<>
+        accum.push(
             <div key={coin.symbol} className="title level">
-                <div className="level-left"><span class="icon has-text-light"><img src={logo.src} alt={coin.symbol} />&nbsp;</span> {coin.status || coin.balanceFormatted} {coin.symbol}</div>
-                <div className="level-right has-text-right"><ToDai coin={coin.symbol} balance={coin.balance}/> DAI</div>
+                <div className="level-left"><span className="icon has-text-light"><img src={logo.src} alt={coin.symbol} />&nbsp;</span> {coin.status || coin.balanceFormatted} {coin.symbol}</div>
+                <div className="level-right has-text-right"><ToDai coin={coin.symbol} balance={coin.balance} /> DAI</div>
             </div>
-        </>);
+        );
         return accum;
-    },[])
+    }, [])
 
     if (showtandc && accounts && accounts[0]) {
         return (
@@ -57,31 +60,30 @@ const Comp = ({ agreedtandc, showtandc, account, balances, getBalancesFor, setSh
 
     return (<>
 
-        <p class="title is-text-overflow">{`Wallet ${account || ""}`}</p>
-        <p class="subtitle">
-            Terms and conditions signed
-     {(agreedtandc !== true && accounts && accounts[0]) ? (
-                <>
-                    [no] <span onClick={() => { setShowTandC(true) }}>[sign]</span>
-                    {/* <TandC /> */}
-                </>
-            ) : (
+        <p className="title is-text-overflow">{`Wallet ${account || ""}`}</p>
+        <p className="subtitle">
+            <span>Terms and conditions signed</span>
+            {(agreedtandc !== true && accounts && accounts[0]) ?
+                (
                     <>
-                        [X]
-           
+                        [no] <span onClick={() => { setShowTandC(true) }}>[sign]</span>
+                    </>
+                ) : (
+                    <>
+                        <span>[X]</span>
                     </>
 
                 )}
 
         </p>
         <br />
-    {accounts && accounts[0] && (
-        <>
-        {daiBalance}
-        <p>Other balances</p>
-        {otherBalances}
-</>
-    )}
+        {accounts && accounts[0] && (
+            <>
+                {daiBalance}
+                <p>Other balances</p>
+                {otherBalances}
+            </>
+        )}
     </>
     );
 };
