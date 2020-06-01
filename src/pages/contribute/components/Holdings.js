@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 // import MetaMaskContext from "../../../components/MetaMask";
 import { connect } from "react-redux";
 import BN from "bn.js";
