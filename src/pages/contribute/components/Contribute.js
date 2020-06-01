@@ -1,70 +1,15 @@
 import React, { useContext } from "react";
 import { connect } from "react-redux";
 import MetaMaskContext from "../../../components/MetaMask";
-import tandcData from "../../../assets/tandc.json";
 import "./Contribute.css";
 import MetaMaskButton from "../../../components/MetaMaskButton";
 import DAI from 'cryptocurrency-icons/svg/color/dai.svg';
 
 const Comp = ({ web3available, agreedtandc, onSetAgreedtandc, setShowTandC }) => {
 
-    const { web3, accounts, error, awaiting, openMetaMask } = useContext(
+    const { accounts } = useContext(
         MetaMaskContext,
     );
-
-    // console.log("accounts", accounts);
-
-    // const [agreetandc, setAgreetandc] = React.useState(false);
-    // const [box3, setBox3] = React.useState(false);
-    // const [enableSubmit, setEnableSubmit] = React.useState(false);
-
-    // const [signError, setSignError] = React.useState();
-
-
-    // React.useEffect(() => {
-    //     setEnableSubmit(agreetandc && box3);
-    //     console.log("Check all ??", agreetandc ? "true" : "false", box3 ? "true" : "false", enableSubmit ? "true" : "false");
-    // }, [setEnableSubmit, enableSubmit, agreetandc, box3]);
-
-
-    // if (!accounts || !accounts[0]) {
-    //     return (<div>Waiting for web3 provider</div>);
-    // }
-
-    // const signIt = (message) => {
-
-    //     const msgParams = [
-    //         {
-    //             type: 'string',      // Any valid solidity type
-    //             name: 'Commons Stack signature',     // Any string label you want
-    //             value: message  // The value to sign
-    //         },
-    //     ];
-    //     const from = web3.currentProvider.selectedAddress;
-
-    //     web3.currentProvider.sendAsync({
-    //         method: 'eth_signTypedData',
-    //         params: [msgParams, from],
-    //         from: from,
-    //     }, function (err, result) {
-    //         debugger;
-    //         if (err) {
-    //             return setSignError("Signature failed.");
-    //         }
-    //         // if (err) return console.error(err)
-    //         if (result.error) {
-    //             return setSignError(`Signature error. ${result.error.message}`);
-    //             // return console.error()
-    //         }
-
-    //         if (!result.result) {
-    //             return setSignError("No signature received.");
-    //         }
-
-    //         onSetAgreedtandc(result.result);
-
-    //     });
-    // }
 
 
     return (
@@ -72,24 +17,23 @@ const Comp = ({ web3available, agreedtandc, onSetAgreedtandc, setShowTandC }) =>
         <div class="tile is-child">
             <div class="menu contrib level has-text-centered">
                 <div class="level-item active">
-                    Iteration 1
-</div>
+                    <span>Iteration 1</span>
+                </div>
                 <div class="level-item">
-                    Iteration 2
-</div>
+                    <span>Iteration 2</span>
+                </div>
                 <div class="level-item">
-                    Iteration 3
-</div>
+                    <span>Iteration 3</span>
+                </div>
                 <div class="level-item">
-                    Iteration 4
-</div>
+                    <span>Iteration 4</span>
+                </div>
                 <div class="level-item">
-                    Iteration 5
-</div>
+                    <span>Iteration 5</span>
+                </div>
             </div>
             <article class=" notification is-primary">
                 <div class="contribmain">
-
 
                     <nav class="level">
                         <div class="level-item has-text-centered">

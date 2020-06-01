@@ -5,12 +5,9 @@ import tandcData from "../../../assets/tandc.json";
 import "./TandC.sass";
 
 const Comp = ({
-  web3available,
-  agreedtandc,
   onSetAgreedtandc,
-  setShowTandC,
 }) => {
-  const { web3, accounts, error, awaiting, openMetaMask } = useContext(
+  const { web3, accounts} = useContext(
     MetaMaskContext
   );
 

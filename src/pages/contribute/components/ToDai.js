@@ -7,7 +7,7 @@ const Comp = ({ balance, coin }) => {
 
     const [convertedBalance, setConvertedBalance] = React.useState(false);
 
-    const { web3, accounts, error, awaiting, openMetaMask } = useContext(
+    const { web3 } = useContext(
         MetaMaskContext,
     );
 

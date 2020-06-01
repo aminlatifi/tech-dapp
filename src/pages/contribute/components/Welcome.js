@@ -1,23 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import WalletView from "./WalletView";
-import TandC from "./TandC";
 import Contribute from "./Contribute";
 
-const Comp = ({ accounts, agreedtandc, web3available }) => {
-
-    // debugger;
-    //     const [showTandC, setShowTandC] = React.useState(false);
-
-    //     React.useEffect(() => {
-    //         if (accounts && accounts[0] && !agreedtandc) {
-    //             // getBalancesFor(accounts[0]);
-    //             setShowTandC(true);
-    //         }
-    //     }, [accounts,agreedtandc]);
-
-
-
+const Comp = () => {
 
     return (<>
         <section className="section has-text-left">
@@ -36,8 +22,7 @@ const Comp = ({ accounts, agreedtandc, web3available }) => {
                     </article>
                 </div>
                 <div class="tile is-parent">
-
-<Contribute/>
+                    <Contribute />
                 </div>
 
             </div>
