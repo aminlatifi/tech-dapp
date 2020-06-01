@@ -21,7 +21,7 @@ const composeEnhancers =
         }) : compose;
 
 const enhancer = composeEnhancers(
-    applyMiddleware(createBlackBoxMiddleware([['web3']]), save({ states: ["agreedtandc"] })),
+    applyMiddleware(createBlackBoxMiddleware([['web3']]), save({ states: ["agreedtandc","tandcsignature"] })),
 );
 
 // const store = createStore(reducer, load(), enhancer);
