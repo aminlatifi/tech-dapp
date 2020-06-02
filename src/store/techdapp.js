@@ -7,6 +7,13 @@ const initialState = {
     showtandc: false,
     web3: null,
     balances: {},
+    currentIteration: undefined,
+    cstackBalance: undefined,
+    rcstackBalance: undefined,
+    softCap: undefined,
+    hardCap: undefined,
+    softCapTimestamp: undefined,
+    totalReceived: undefined,
 };
 
 const coins = [
@@ -17,6 +24,13 @@ const reducer = (state = initialState, action) => {
     // const newState = { ...state };
     console.log(`reducer ${action.type}`, state);
     switch (action.type) {
+        case "BOOTSTRAP":
+            console.log("Bootstrap");
+            return {
+                ...state,
+
+            }
+
         case "SET_SHOW_TANDC":
             return {
                 ...state,
@@ -34,9 +48,48 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 account: action.account,
-                // web3available: true,
                 web3: action.web3
             }
+        case "READ_FUNDING_CONTRACT":
+            return {
+                ...state,
+
+
+                READ_FUNDING_CONTRACT: new PromiseBlackBox(
+                    () => {
+                        return new Promise((resolve) => {
+                            setTimeout(resolve, 1000);
+                        })
+                            .then(res => ({ type: "READ_FUNDING_CONTRACT_SUCCESS", res }))
+                            .catch(e => ({ type: "READ_FUNDING_CONTRACT_FAIL", e }))
+                    }
+                )
+            }
+        case "READ_FUNDING_CONTRACT_SUCCESS":
+            delete state.BB_READ_FUNDING_CONTRACT;
+            if (!state.web3){
+                return state;
+            }
+            // TODO : wire this up to the actual contract
+            return ({
+                ...state,
+                currentIteration: 0,
+                cstackBalance: new state.web3.utils.BN("4000000000000000000"),
+                rcstackBalance: new state.web3.utils.BN("12345000000000000000000"),
+                softCap: new state.web3.utils.BN("850000000000000000000000"),
+                hardCap: new state.web3.utils.BN("1200000000000000000000000"),
+                softCapTimestamp: undefined,
+                totalReceived: new state.web3.utils.BN("24000000000000000000000"),
+                personalCap: new state.web3.utils.BN("15000000000000000000000"),
+                numerator: 3,
+                denominator: 2,
+            }
+            )
+        case "READ_FUNDING_CONTRACT_FAIL":
+            delete state.BB_READ_FUNDING_CONTRACT;
+            return ({
+                ...state
+            })
         case "GET_BALANCES_FOR_ADDRESS":
             if (!action.address || !state.web3) return state;
             if (!state.balances[action.address]) {
@@ -52,8 +105,8 @@ const reducer = (state = initialState, action) => {
             }
         case "GET_BALANCES_FOR_ADDRESS_SUCCESS":
             delete state.BB_GET_BALANCES_FOR_ADDRESS;
-            const addressBalances = action.res.map((item)=>{
-                item.balanceFormatted = parseFloat(state.web3.utils.fromWei(item.balance,"ether")).toFixed(2);
+            const addressBalances = action.res.map((item) => {
+                item.balanceFormatted = parseFloat(state.web3.utils.fromWei(item.balance, "ether")).toFixed(2);
                 return item;
             })
             return {

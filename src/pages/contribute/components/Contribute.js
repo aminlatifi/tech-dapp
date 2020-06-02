@@ -4,48 +4,61 @@ import MetaMaskContext from "../../../components/MetaMask";
 import "./Contribute.css";
 import MetaMaskButton from "../../../components/MetaMaskButton";
 import DAI from 'cryptocurrency-icons/svg/color/dai.svg';
+import BN from "bn.js";
 
-const Comp = ({ web3available, agreedtandc, onSetAgreedtandc, setShowTandC }) => {
+const Comp = ({ web3available, agreedtandc, onSetAgreedtandc, setShowTandC, personalCap, numerator, denominator, softCap,
+    hardCap, totalReceived }) => {
 
     const { accounts } = useContext(
         MetaMaskContext,
     );
 
+    const _ratio = numerator && denominator ?
+        (numerator / denominator).toFixed(2) : null;
+
+    const _personalCap = personalCap && personalCap.div(new BN("1000000000000000000")).toString(10);
+
+    const _softCap = softCap && softCap.div(new BN("1000000000000000000")).toString(10);
+    const _hardCap = hardCap && hardCap.div(new BN("1000000000000000000")).toString(10);
+    const _totalReceived = totalReceived && totalReceived.div(new BN("1000000000000000000")).toString(10);
 
     return (
 
-        <div class="tile is-child">
-            <div class="menu contrib level has-text-centered">
-                <div class="level-item active">
+        <div className="tile is-child">
+            <div className="menu contrib level has-text-centered">
+                <div className="level-item active">
                     <span>Iteration 1</span>
                 </div>
-                <div class="level-item">
+                <div className="level-item">
                     <span>Iteration 2</span>
                 </div>
-                <div class="level-item">
+                <div className="level-item">
                     <span>Iteration 3</span>
                 </div>
-                <div class="level-item">
+                <div className="level-item">
                     <span>Iteration 4</span>
                 </div>
-                <div class="level-item">
+                <div className="level-item">
                     <span>Iteration 5</span>
                 </div>
             </div>
-            <article class=" notification is-primary">
-                <div class="contribmain">
+            <article className=" notification is-primary">
+                <div className="contribmain">
 
-                    <nav class="level">
-                        <div class="level-item has-text-centered">
+                    <nav className="level">
+                        <div className="level-item has-text-centered">
                             <div>
-                                <p class="heading">Your personal cap</p>
-                                <p class="title">3,456 CSTK</p>
+                                <p className="heading">Your personal cap</p>
+                                <p className="title">{_personalCap}</p>
                             </div>
                         </div>
-                        <div class="level-item has-text-centered">
+                        <div className="level-item has-text-centered">
                             <div>
-                                <p class="heading">Current issuance rate</p>
-                                <p class="title">2.5 CSTK / DAI</p>
+                                <p className="heading">Current issuance rate</p>
+                                {_ratio && (
+                                    <p className="title">{_ratio} CSTK / DAI</p>
+                                )
+                                }
                             </div>
                         </div>
                     </nav>
@@ -58,35 +71,35 @@ const Comp = ({ web3available, agreedtandc, onSetAgreedtandc, setShowTandC }) =>
                         <div className="enable has-text-centered">
 
 
-                            <p class="title">Want to contribute to Commons Stack? Connect your wallet below.</p>
+                            <p className="title">Want to contribute to Commons Stack? Connect your wallet below.</p>
                             <MetaMaskButton className="is-outlined" clickMessage="Connect Wallet" />
                         </div>
                     )}
                     <div className="slider">
 
 
-                        <div class="level">
-                            <div class="level-left">
-                                <div class="level-item">
-                                    <img src={DAI.src} alt={DAI.symbol} /><span>24000 DAI</span>
+                        <div className="level">
+                            <div className="level-left">
+                                <div className="level-item">
+                                    <img src={DAI.src} alt={DAI.symbol} /><span>{_totalReceived} DAI</span>
                                 </div>
                             </div>
 
-                            <div class="level-right">
-                                <div class="level-item">984K DAI</div>
-                                <div class="level-item"> 1.25M DAI</div>
+                            <div className="level-right">
+                                <div className="level-item">{_softCap} DAI</div>
+                                <div className="level-item">{_hardCap} DAI</div>
                             </div>
                         </div>
-                        <progress class="progress is-primary" value="15" max="100">15%</progress>
+                        <progress className="progress is-primary" value="15" max="100">15%</progress>
 
-                        <div class="level">
-                            <div class="level-left">
-                                <div class="level-item">Total Contributed to this iteration</div>
+                        <div className="level">
+                            <div className="level-left">
+                                <div className="level-item">Total Contributed to this iteration</div>
                             </div>
 
-                            <div class="level-right">
-                                <div class="level-item">soft cap</div>
-                                <div class="level-item"> hard cap</div>
+                            <div className="level-right">
+                                <div className="level-item">soft cap</div>
+                                <div className="level-item"> hard cap</div>
                             </div>
                         </div>
 
@@ -94,9 +107,9 @@ const Comp = ({ web3available, agreedtandc, onSetAgreedtandc, setShowTandC }) =>
 
                     </div>
 
-                    {/* <p class="title">Contribute to Commons Stack Iteration 1</p>
-                    <p class="subtitle">With an image</p>
-                    <figure class="image is-4by3">
+                    {/* <p className="title">Contribute to Commons Stack Iteration 1</p>
+                    <p className="subtitle">With an image</p>
+                    <figure className="image is-4by3">
                         <img alt="Placehodler" src="https://bulma.io/images/placeholders/640x480.png" />
                     </figure>*/}
                 </div>
@@ -111,6 +124,12 @@ const mapStateToProps = state => {
     return {
         agreedtandc: state.agreedtandc,
         web3available: state.web3available,
+        personalCap: state.personalCap,
+        numerator: state.numerator,
+        denominator: state.denominator,
+        softCap: state.softCap,
+        hardCap: state.hardCap,
+        totalReceived: state.totalReceived
     };
 };
 

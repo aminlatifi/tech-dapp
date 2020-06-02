@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import pages from "./pages";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import "./sass/style.sass";
 import MetaMaskContext from "./components/MetaMask";
 import Navigation from "./components/Navigation";
+import { connect } from "react-redux";
 
-function App() {
+function App({ bootstrap }) {
+
+    useEffect(() => {
+        bootstrap();
+    }, [bootstrap]);
+
     return (
         <div className="App">
             <MetaMaskContext.Provider immediate={false}>
-                <section class="hero is-fullheight is-default is-bold">
+                <section className="hero is-fullheight is-default is-bold">
 
                     <BrowserRouter>
                         <Switch>
@@ -21,8 +27,8 @@ function App() {
                                     render={props => (
                                         <>
                                             <Navigation {...props} />
-                                            <div class="hero-body">
-                                                <div class="container has-text-centered">
+                                            <div className="hero-body">
+                                                <div className="container has-text-centered">
                                                     <RootComponent rootpath={rootPath} {...props} />
                                                 </div>
                                             </div>
@@ -38,4 +44,17 @@ function App() {
     );
 }
 
-export default App;
+const mapStateToProps = state => {
+    return {};
+};
+
+const mapDispachToProps = dispatch => {
+    return {
+        bootstrap: () => dispatch({ type: "BOOTSTRAP" }),
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispachToProps
+)(App);
