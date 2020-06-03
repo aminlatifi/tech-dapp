@@ -3,16 +3,16 @@ import MetaMaskContext from "../../../components/MetaMask";
 import { connect } from "react-redux";
 import DAI from "cryptocurrency-icons/svg/color/dai.svg";
 import ETH from "cryptocurrency-icons/svg/color/eth.svg";
-import ANT from "cryptocurrency-icons/svg/color/ant.svg";
-import BAT from "cryptocurrency-icons/svg/color/bat.svg";
+// import ANT from "cryptocurrency-icons/svg/color/ant.svg";
+// import BAT from "cryptocurrency-icons/svg/color/bat.svg";
 import TandC from "./TandC";
 import ToDai from "./ToDai";
 
 const coinLogos = [
   { symbol: "DAI", src: DAI },
   { symbol: "ETH", src: ETH },
-  { symbol: "ANT", src: ANT },
-  { symbol: "BAT", src: BAT },
+  // { symbol: "ANT", src: ANT },
+  // { symbol: "BAT", src: BAT },
 ];
 
 const Comp = ({
@@ -41,12 +41,12 @@ const Comp = ({
     {
       symbol: "ETH",
     },
-    {
-      symbol: "ANT",
-    },
-    {
-      symbol: "BAT",
-    },
+    // {
+    //   symbol: "ANT",
+    // },
+    // {
+    //   symbol: "BAT",
+    // },
   ];
 
   const coins =
