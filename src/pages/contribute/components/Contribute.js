@@ -3,11 +3,11 @@ import { connect } from "react-redux";
 import MetaMaskContext from "../../../components/MetaMask";
 import "./Contribute.sass";
 import MetaMaskButton from "../../../components/MetaMaskButton";
-import DAI from "cryptocurrency-icons/svg/color/dai.svg";
 import BN from "bn.js";
 import GovernanceRights from "../../../assets/governanceRights.svg";
 import Access from "../../../assets/access.svg";
 import Membership from "../../../assets/membership.svg";
+import Slider from "../../../components/Slider";
 
 const Comp = ({
   web3available,
@@ -28,14 +28,6 @@ const Comp = ({
 
   const _personalCap =
     personalCap && personalCap.div(new BN("1000000000000000000")).toString(10);
-
-  const _softCap =
-    softCap && softCap.div(new BN("1000000000000000000")).toString(10);
-  const _hardCap =
-    hardCap && hardCap.div(new BN("1000000000000000000")).toString(10);
-  const _totalReceived =
-    totalReceived &&
-    totalReceived.div(new BN("1000000000000000000")).toString(10);
 
   return (
     <div className="tile is-child">
@@ -88,37 +80,8 @@ const Comp = ({
               />
             </div>
           )}
-          <div className="slider">
-            <div className="level">
-              <div className="level-left">
-                <div className="level-item">
-                  <img src={DAI.src} alt={DAI.symbol} />
-                  <span>{_totalReceived} DAI</span>
-                </div>
-              </div>
-
-              <div className="level-right">
-                <div className="level-item">{_softCap} DAI</div>
-                <div className="level-item">{_hardCap} DAI</div>
-              </div>
-            </div>
-            <progress className="progress is-primary" value="15" max="100">
-              15%
-            </progress>
-
-            <div className="level">
-              <div className="level-left">
-                <div className="level-item">
-                  Total Contributed to this iteration
-                </div>
-              </div>
-
-              <div className="level-right">
-                <div className="level-item">soft cap</div>
-                <div className="level-item"> hard cap</div>
-              </div>
-            </div>
-          </div>
+          <div className="is-divider mt-2 mb-2"></div>
+          <Slider />
           <div className="is-divider mt-2 mb-2"></div>
           <div className="title-level">
             <div className="level-left">
