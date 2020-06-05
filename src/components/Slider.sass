@@ -1,15 +1,10 @@
+@import '../sass/_colors'
+
 .slider
     margin-top: 2em
 
     .level
         margin-bottom: 0.8rem !important
-
-    .level-item
-        //TODO for now
-        .right
-            min-width: 7rem
-            max-width: 7rem
-            text-align: center
 
 .progress
     height: 0.8rem !important
@@ -19,18 +14,18 @@
     float: left
 
     &.fill
-        background-image: linear-gradient(270deg, #1BDD9D 8%,#2CC9CC 100%)
+        background-image: $linear-gradient-col-primary
         height: 100%
 
     &.shadow
         height: 100%
 
     &.full
-        background-color: #34424F
+        background-color: $progressbar-background-color
         height: 100%
 
 .linear-gradient-text
     p
-        background: linear-gradient(270deg, #1BDD9D 8%,#2CC9CC 100%)
+        background: $linear-gradient-col-primary
         -webkit-background-clip: text
         -webkit-text-fill-color: transparent

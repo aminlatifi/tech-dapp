@@ -31,12 +31,13 @@ const Slider = ({ softCap, hardCap, totalReceived }) => {
   const _totalReceived =
     totalReceived &&
     totalReceived.div(new BN("1000000000000000000")).toString(10);
+
   // Just for testing purposes
-  // const _softCap = 10;
-  // const _hardCap = 15;
-  // const _totalReceived = 12;
-  // const _softCap = 12;
-  // const _hardCap = 15;
+  // const _softCap = 18;
+  // const _hardCap = 20;
+  // const _totalReceived = 19;
+  // const _softCap = 18;
+  // const _hardCap = 20;
   // const _totalReceived = 10;
 
   const progressBarStyles = getProgressBarStyles({
@@ -54,7 +55,6 @@ const Slider = ({ softCap, hardCap, totalReceived }) => {
               <img src={DAI} alt={DAI} />
               &nbsp;
             </span>
-
             <div className="linear-gradient-text">
               <p>{_totalReceived} DAI</p>
             </div>
@@ -63,10 +63,10 @@ const Slider = ({ softCap, hardCap, totalReceived }) => {
 
         <div className="level-right">
           <div className="level-item">
-            <p className="subtitle is-6 right">{_softCap} DAI</p>
+            <p className="subtitle is-6">{_softCap} DAI</p>
           </div>
           <div className="level-item">
-            <p className="subtitle is-6 right">{_hardCap} DAI</p>
+            <p className="subtitle is-6">{_hardCap} DAI</p>
           </div>
         </div>
       </div>
@@ -104,10 +104,10 @@ const Slider = ({ softCap, hardCap, totalReceived }) => {
         </div>
         <div className="level-right">
           <div className="level-item">
-            <p className="subtitle is-7 right">Soft Cap</p>
+            <p className="subtitle is-7">Soft Cap</p>
           </div>
           <div className="level-item">
-            <p className="subtitle is-7 right">Hard Cap</p>
+            <p className="subtitle is-7">Hard Cap</p>
           </div>
         </div>
       </div>

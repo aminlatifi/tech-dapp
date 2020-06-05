@@ -1,16 +1,17 @@
+@import '../../../sass/_colors'
+
 .contrib
 
     text-transform: uppercase
-
-    color: rgb(174, 174, 174)
-    background-color: #293540
+    color: $contribute-color
+    background-color: $element-background
     padding-bottom: 1.5rem
 
     &.level
         margin-bottom: 0em !important
 
     &main .enable
-        background-color: #324150
+        background-color: $contribute-background
         padding: 2em
         margin-top: 2em
 
@@ -20,7 +21,7 @@
 
     & .menu
 
-        border-bottom-color: #293540
+        border-bottom-color: $element-background
         border-bottom-width: 0.5em
         padding-bottom: 0px
 
@@ -28,15 +29,14 @@
         padding: 0.5em 0 0 0
 
     & .level-item
-
-        border-bottom-color: #22272d
+        border-bottom-color: $iteration-border-color
         border-bottom-width: 0.2em
         border-bottom-style: solid
 
     & .level-item.active
-        color: #1BDD9D
+        color: $accent-col-3
 
-        border-bottom-color: #1BDD9D
+        border-bottom-color: $accent-col-3
         border-bottom-width: 0.2em
         border-bottom-style: solid
 
@@ -45,14 +45,12 @@
     display: flex
     justify-content: space-around
     align-items: center
-    min-width: 35rem
 
     .item-container
         display: flex
         flex-direction: column
         justify-content: space-between
         align-items: center
-        //TODO add media queries
         max-width: 13rem
         text-align: center
 
