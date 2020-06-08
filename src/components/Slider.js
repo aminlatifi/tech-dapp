@@ -2,9 +2,10 @@ import React from "react";
 import { connect } from "react-redux";
 import DAI from "cryptocurrency-icons/svg/color/dai.svg";
 import BN from "bn.js";
+import Spinner from "./Spinner";
 import "./Slider.sass";
 
-const Slider = ({ softCap, hardCap, totalReceived }) => {
+const Slider = ({ softCap, hardCap, totalReceived, loading }) => {
   const getProgressBarStyles = ({ _softCap, _hardCap, _totalReceived }) => {
     let fill, shadow, full;
 
@@ -24,6 +25,7 @@ const Slider = ({ softCap, hardCap, totalReceived }) => {
       full,
     };
   };
+
   const _softCap =
     softCap && softCap.div(new BN("1000000000000000000")).toString(10);
   const _hardCap =
@@ -56,45 +58,69 @@ const Slider = ({ softCap, hardCap, totalReceived }) => {
               &nbsp;
             </span>
             <div className="linear-gradient-text">
-              <p>{_totalReceived} DAI</p>
+              {loading ? <Spinner /> : <span>{_totalReceived} DAI</span>}
             </div>
           </div>
         </div>
 
         <div className="level-right">
           <div className="level-item">
-            <p className="subtitle is-6">{_softCap} DAI</p>
+            <p className="subtitle is-6">
+              {loading ? (
+                <p className="level mr-05">
+                  <Spinner />
+                  DAI
+                </p>
+              ) : (
+                <p>{_softCap} DAI</p>
+              )}
+            </p>
           </div>
           <div className="level-item">
-            <p className="subtitle is-6">{_hardCap} DAI</p>
+            <p className="subtitle is-6">
+              {loading ? (
+                <p className="level mr-05">
+                  <Spinner />
+                  DAI
+                </p>
+              ) : (
+                <p>{_softCap} DAI</p>
+              )}
+            </p>
           </div>
         </div>
       </div>
-      <div className="progress">
-        <div
-          className={"progress-bar fill"}
-          style={{ width: `${progressBarStyles.fill}%` }}
-        ></div>
-        <div
-          className="progress-bar shadow"
-          style={
-            _softCap - _totalReceived > 0
-              ? {
-                  width: `${progressBarStyles.shadow}%`,
-                  backgroundColor: "#4A5D6F",
-                }
-              : {
-                  width: `${progressBarStyles.shadow}%`,
-                  background:
-                    "linear-gradient(270deg, #8E2DE2 0%, #4A00E0 100%)",
-                }
-          }
-        ></div>
-        <div
-          className="progress-bar full"
-          style={{ width: `${progressBarStyles.full}%` }}
-        ></div>
-      </div>
+      {loading ? (
+        <div className="progress">
+          <div className="progress-bar full" style={{ width: "100%" }}></div>
+        </div>
+      ) : (
+        <div className="progress">
+          <div
+            className="progress-bar fill"
+            style={{ width: `${progressBarStyles.fill}%` }}
+          ></div>
+          <div
+            className="progress-bar shadow"
+            style={
+              _softCap - _totalReceived > 0
+                ? {
+                    width: `${progressBarStyles.shadow}%`,
+                    backgroundColor: "#4A5D6F",
+                  }
+                : {
+                    width: `${progressBarStyles.shadow}%`,
+                    background:
+                      "linear-gradient(270deg, #8E2DE2 0%, #4A00E0 100%)",
+                  }
+            }
+          ></div>
+          <div
+            className="progress-bar full"
+            style={{ width: `${progressBarStyles.full}%` }}
+          ></div>
+        </div>
+      )}
 
       <div className="level">
         <div className="level-left">
@@ -120,6 +146,7 @@ const mapStateToProps = (state) => {
     softCap: state.softCap,
     hardCap: state.hardCap,
     totalReceived: state.totalReceived,
+    loading: state.loading,
   };
 };
 

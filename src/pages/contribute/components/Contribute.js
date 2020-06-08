@@ -142,12 +142,6 @@ const Comp = ({
               </div>
             </div>
           </div>
-
-          {/* <p className="title">Contribute to Commons Stack Iteration 1</p>
-                    <p className="subtitle">With an image</p>
-                    <figure className="image is-4by3">
-                        <img alt="Placehodler" src="https://bulma.io/images/placeholders/640x480.png" />
-                    </figure>*/}
         </div>
       </article>
     </div>
