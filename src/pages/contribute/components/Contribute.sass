@@ -1,0 +1,59 @@
+@import '../../../sass/_colors'
+
+.contrib
+
+    text-transform: uppercase
+    color: $contribute-color
+    background-color: $element-background
+    padding-bottom: 1.5rem
+
+    &.level
+        margin-bottom: 0em !important
+
+    &main .enable
+        background-color: $contribute-background
+        padding: 2em
+        margin-top: 2em
+
+    & .level-item
+        padding-top: 1em
+        padding-bottom: 1em
+
+    & .menu
+
+        border-bottom-color: $element-background
+        border-bottom-width: 0.5em
+        padding-bottom: 0px
+
+    & .column
+        padding: 0.5em 0 0 0
+
+    & .level-item
+        border-bottom-color: $iteration-border-color
+        border-bottom-width: 0.2em
+        border-bottom-style: solid
+
+    & .level-item.active
+        color: $accent-col-3
+
+        border-bottom-color: $accent-col-3
+        border-bottom-width: 0.2em
+        border-bottom-style: solid
+
+.items-container
+    width: 100%
+    display: flex
+    justify-content: space-around
+    align-items: center
+
+    .item-container
+        display: flex
+        flex-direction: column
+        justify-content: space-between
+        align-items: center
+        max-width: 13rem
+        text-align: center
+
+        p
+            text-align: center
+            padding: 1rem 0
