@@ -58,16 +58,14 @@ const Comp = ({ account, readFundingContract, cstackBalance, rcstackBalance }) =
 
     return (<>
 
-        <p className="title">Your Current CSTK Holdings</p>
+        <p className="title">Your CSTK Score</p>
+        <br/>
         {/* <p className="subtitle">...</p> */}
-        {(rcstackBalance !== undefined) && (
-            <div className="subtitle">{rcstackBalance.div(new BN("1000000000000000000")).toString(10)} rCSTK</div>
-        )}
         {(cstackBalance !== undefined) && (
             <div className="subtitle">{cstackBalance.div(new BN("1000000000000000000")).toString(10)} CSTACK </div>
         )}
-        {(rcstackBalance === new BN(0) && cstackBalance === new BN(0)) && (
-         <p className="subtitle">You haven't contributed anything yet.</p>
+        {(cstackBalance === undefined || cstackBalance === new BN(0)) && (
+         <p className="subtitle">You haven't paid membership dues yet.</p>
         )}
     </>
     );
