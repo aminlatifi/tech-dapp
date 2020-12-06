@@ -41,7 +41,7 @@ const Comp = ({ web3available, agreedtandc, onSetAgreedtandc }) => {
 
           <div id="navMenu" className="navbar-menu">
             <div className="navbar-start">
-              <div
+              {/* <div
                 className={
                   activeNavItem === 1 ? "navbar-item is-active" : "navbar-item"
                 }
@@ -49,14 +49,14 @@ const Comp = ({ web3available, agreedtandc, onSetAgreedtandc }) => {
                 <Link to="/">
                   <span>About contribution</span>
                 </Link>
-              </div>
+              </div> */}
               <div
                 className={
                   activeNavItem === 2 ? "navbar-item is-active" : "navbar-item"
                 }
               >
                 <Link to="/contribute">
-                  <span>Contribute</span>
+                  <span>Membership</span>
                 </Link>
               </div>
               <div

@@ -9,9 +9,10 @@ import Access from "../../../assets/access.svg";
 import Membership from "../../../assets/membership.svg";
 import Slider from "../../../components/Slider";
 import Cstk from "../../../assets/cstk.svg";
+import ContributeForm from "./ContributeForm";
 
 const Comp = ({
-    web3available,
+    web3,
     agreedtandc,
     onSetAgreedtandc,
     setShowTandC,
@@ -22,13 +23,32 @@ const Comp = ({
     hardCap,
     totalReceived,
 }) => {
+
+    const viewStates = Object.freeze({
+        "INIT": 1,
+        "WAITINGTOCONTRIBUTE": 2,
+        "STARTDONATING": 3,
+    });
+
+    const changeViewState = (from, to) => {
+        // make sure you can only transition from a known state to another known state
+        if (viewState === from) {
+            setViewState(to);
+        } else {
+            console.log(`Cannot transition to this VS`);
+        }
+    }
+
+    React.useEffect(() => {
+        if (web3 && agreedtandc) {
+            changeViewState(viewStates.INIT, viewStates.WAITINGTOCONTRIBUTE);
+        }
+    }, [web3, agreedtandc]);
+
+
+    const [viewState, setViewState] = React.useState(viewStates.INIT);
+
     const { accounts } = useContext(MetaMaskContext);
-
-    const _ratio =
-        numerator && denominator ? (numerator / denominator).toFixed(2) : null;
-
-    const _personalCap =
-        personalCap && personalCap.div(new BN("1000000000000000000")).toString(10);
 
     return (
         <div className="tile is-child">
@@ -36,25 +56,46 @@ const Comp = ({
                 <div className="contribmain">
 
                     <p className="subtitle mb-2">
-                        YOUR MEMBERSSHIP SCORE
+                        YOUR MEMBERSHIP SCORE
               </p>
 
-                    <article class="media">
-                        <figure class="media-left">
-                            <p class="image is-64x64">
-                                <img alt="CSTK logo" src={Cstk} />
-                            </p>
-                        </figure>
-                        <div class="media-content">
-                            <div class="content">
-                                <p className="heading is-size-2">0 CSTK</p>
+                    <div class="level">
+                        <div class="level-left">
+                            <div class="level-item">
+                                <article class="media">
+                                    <figure class="media-left">
+                                        <p class="image is-64x64">
+                                            <img alt="CSTK logo" src={Cstk} />
+                                        </p>
+                                    </figure>
+                                    <div class="media-content">
+                                        <div class="content">
+                                            <p className="heading is-size-2 has-text-weight-bold">0 CSTK</p>
+                                        </div>
+                                    </div>
+                                </article>
                             </div>
                         </div>
-                    </article>
+                        <div class="level-right">
+                            <div class="level-item">
+                                <span>
+                                    {viewState === viewStates.WAITINGTOCONTRIBUTE && (
+                                        <button onClick={() => { changeViewState(viewStates.WAITINGTOCONTRIBUTE, viewStates.STARTDONATING) }} class="button is-success is-medium">Make Contribution</button>
+                                    )}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
                     <br />
                     <p>
-                        You can pay membership dues with DAI only. You can aquire DAI on <a rel="noopener noreferrer" target="_blank" href="https://1inch.exchange">1inch.exchange</a>
+                        You can pay membership dues with DAI only. You can acquire DAI on <a rel="noopener noreferrer" target="_blank" href="https://1inch.exchange">1inch.exchange</a>
                     </p>
+
+                    {viewState === viewStates.STARTDONATING && (
+                        <ContributeForm />
+                    )}
+
                     {(!accounts || !accounts[0]) && (
                         <div className="enable has-text-centered">
                             <p className="title">
@@ -71,10 +112,9 @@ const Comp = ({
                     <div className="is-divider mt-2 mb-2"></div>
                     <div className="title-level">
                         <div className="level-left">
-                            <p className="subtitle mb-2">
-                                FOR YOUR CONTRIBUTION YOU WILL ALSO RECEIVE:
-              </p>
+                            <p className="subtitle mb-2">FOR YOUR CONTRIBUTION YOU WILL ALSO RECEIVE:</p>
                         </div>
+
                         <div className="level">
                             <div className="items-container">
                                 <div className="level-item">
@@ -137,7 +177,7 @@ const Comp = ({
 const mapStateToProps = (state) => {
     return {
         agreedtandc: state.agreedtandc,
-        web3available: state.web3available,
+        web3: state.web3,
         personalCap: state.personalCap,
         numerator: state.numerator,
         denominator: state.denominator,

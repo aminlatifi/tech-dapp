@@ -87,6 +87,7 @@ const Comp = ({
         const logo = coinLogos.find((coinIcon) => {
             return coinIcon.symbol === coin.symbol;
         });
+
         accum.push(
             <div key={coin.symbol} className="title level mb-04">
                 <div className="subtitle level-left mb-04">
@@ -98,7 +99,7 @@ const Comp = ({
                 </div>
                 {balances && balances[account] ? (
                     <div className="subtitle level-right">
-                        <ToDai coin={coin.symbol} balance={coin.balance} /> {coin.symbol}
+                        {coin.balanceFormatted} {coin.symbol}
                     </div>
                 ) : (
                         <div className="subtitle level-right">
@@ -119,13 +120,26 @@ const Comp = ({
             <p className="title is-text-overflow mb-2">
                 Membership Terms
           </p>
-            <div className="subtitle mb-08">
+            <div className="subtitle mb-05">
                 <div className="title-level">
                     <div className="level-left">
-                        <span className="icon">
-                            <i className="fas fa-times-circle"></i>
-                        </span>
-                        <span className="is-size-7">Sign Terms and Conditions</span>
+                        {agreedtandc === true ? (
+                            <div className="">
+                                <span className="icon has-text-success">
+                                    <i className="fas fa-check-circle"></i>
+                                </span>
+                                <span className="is-size-7">Sign Terms and Conditions</span>
+                            </div>
+                        ) : (
+                                <>
+                                    <span className="icon">
+                                        <i className="fas fa-times-circle"></i>
+                                    </span>
+                                    <span className="is-size-7">Sign Terms and Conditions</span>
+                                </>
+                            )}
+
+
                     </div>
                     <div className="level-left">
                         <span className="icon">
@@ -180,10 +194,10 @@ const Comp = ({
     );
 };
 
-const mapStateToProps = ({ showtandc, account, balances, needagreetandc }) => {
+const mapStateToProps = ({ showtandc, account, balances, agreedtandc }) => {
     return {
         showtandc,
-        needagreetandc,
+        agreedtandc,
         account,
         balances,
     };

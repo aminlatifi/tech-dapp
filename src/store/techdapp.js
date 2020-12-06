@@ -109,11 +109,11 @@ const reducer = (state = initialState, action) => {
                 loading: true,
                 READ_FUNDING_CONTRACT: new PromiseBlackBox(() => {
                     return CSTK
-                            .totalSupply()
-                            .call()
-                            .then((res) => ({ type: "READ_FUNDING_CONTRACT_SUCCESS", res }))
-                            .catch((e) => ({ type: "READ_FUNDING_CONTRACT_FAIL", e }));
-                    
+                        .totalSupply()
+                        .call()
+                        .then((res) => ({ type: "READ_FUNDING_CONTRACT_SUCCESS", res }))
+                        .catch((e) => ({ type: "READ_FUNDING_CONTRACT_FAIL", e }));
+
                 })
             }
 
@@ -183,7 +183,7 @@ const reducer = (state = initialState, action) => {
 
         case "GET_BALANCES_FOR_ADDRESS_FAIL":
             delete state.BB_GET_BALANCES_FOR_ADDRESS;
-            state.balances[action.address] = state.balances[action.address] ? state.balances[action.address].map(
+            state.balances[action.address] = Array.isArray(state.balances[action.address]) ? state.balances[action.address].map(
                 (coin) => {
                     coin.status = "error fetching";
                     return coin;
@@ -208,9 +208,7 @@ const getBalances = async (web3, address, coins) => {
                     return { symbol: coin.symbol, balance: balance };
                 });
         }),
-
-        { symbol: "ETH", balance: await web3.eth.getBalance(address) },
-        // { symbol: "CSTK", balance: await CSTKContract.balanceOf(address).call() }
+        // { symbol: "ETH", balance: await web3.eth.getBalance(address) },
     ]);
 };
 
