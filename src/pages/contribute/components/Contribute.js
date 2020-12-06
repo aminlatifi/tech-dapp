@@ -23,11 +23,14 @@ const Comp = ({
     totalReceived,
 }) => {
 
+
     const viewStates = Object.freeze({
         "INIT": 1,
         "WAITINGTOCONTRIBUTE": 2,
         "STARTDONATING": 3,
     });
+
+    const [viewState, setViewState] = React.useState(viewStates.INIT);
 
     const changeViewState = (from, to) => {
         // make sure you can only transition from a known state to another known state
@@ -39,13 +42,22 @@ const Comp = ({
     }
 
     React.useEffect(() => {
+
+
+        const changeViewState = (from, to) => {
+            // make sure you can only transition from a known state to another known state
+            if (viewState === from) {
+                setViewState(to);
+            } else {
+                console.log(`Cannot transition to this VS`);
+            }
+        }        
         if (web3 && agreedtandc) {
             changeViewState(viewStates.INIT, viewStates.WAITINGTOCONTRIBUTE);
         }
-    }, [web3, agreedtandc]);
+    }, [web3, agreedtandc,viewState,viewStates.INIT,viewStates.WAITINGTOCONTRIBUTE]);
 
 
-    const [viewState, setViewState] = React.useState(viewStates.INIT);
 
     const { accounts } = useContext(MetaMaskContext);
 
