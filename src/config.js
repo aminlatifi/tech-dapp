@@ -16,7 +16,7 @@ const configs = {
     production: {
         name: "prod",
         apiGateway: {
-            URL: "http://localhost:5003"    //TODO
+            URL: "https://cs.datapinner.com"    //TODO
         },
         ETH: {
             // rpcEndpoint: "https://mainnet.eth.cloud.ava.do",
