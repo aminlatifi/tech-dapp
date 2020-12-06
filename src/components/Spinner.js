@@ -1,6 +1,6 @@
 import React from "react";
 
-const Spinner = ({}) => {
+const Spinner = () => {
   return (
     <div class="loader-wrapper">
       <div class="loader is-loading"></div>

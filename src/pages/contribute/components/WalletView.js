@@ -4,9 +4,7 @@ import { connect } from "react-redux";
 import DAI from "cryptocurrency-icons/svg/color/dai.svg";
 import ETH from "cryptocurrency-icons/svg/color/eth.svg";
 import CSTK from "../../../assets/cstk.svg";
-// import BAT from "cryptocurrency-icons/svg/color/bat.svg";
 import TandC from "./TandC";
-import ToDai from "./ToDai";
 
 const coinLogos = [
     { symbol: "DAI", src: DAI },

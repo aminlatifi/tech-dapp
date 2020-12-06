@@ -3,7 +3,6 @@ import { connect } from "react-redux";
 import MetaMaskContext from "../../../components/MetaMask";
 import "./Contribute.sass";
 import MetaMaskButton from "../../../components/MetaMaskButton";
-import BN from "bn.js";
 import GovernanceRights from "../../../assets/governanceRights.svg";
 import Access from "../../../assets/access.svg";
 import Membership from "../../../assets/membership.svg";

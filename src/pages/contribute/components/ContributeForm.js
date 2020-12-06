@@ -1,34 +1,14 @@
-import React, { useContext } from "react";
+import React from "react";
 import { connect } from "react-redux";
-import MetaMaskContext from "../../../components/MetaMask";
 import "./Contribute.sass";
-import MetaMaskButton from "../../../components/MetaMaskButton";
-import BN from "bn.js";
-import GovernanceRights from "../../../assets/governanceRights.svg";
-import Access from "../../../assets/access.svg";
-import Membership from "../../../assets/membership.svg";
-import Slider from "../../../components/Slider";
-import Cstk from "../../../assets/cstk.svg";
 import arrow from "../../../assets/arrow.svg";
 import DAI from "cryptocurrency-icons/svg/color/dai.svg";
-import ETH from "cryptocurrency-icons/svg/color/eth.svg";
 import CSTK from "../../../assets/cstk.svg";
 const config = require("../../../config");
 
 
-const Comp = ({
-    web3available,
-    agreedtandc,
-    onSetAgreedtandc,
-    setShowTandC,
-    personalCap,
-    numerator,
-    denominator,
-    softCap,
-    hardCap,
-    totalReceived,
-}) => {
-    const { accounts } = useContext(MetaMaskContext);
+const Comp = () => {
+    // const { accounts } = useContext(MetaMaskContext);
 
 
     const [amountDAI, setAmountDAI] = React.useState(0);
