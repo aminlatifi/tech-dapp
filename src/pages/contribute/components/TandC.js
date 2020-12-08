@@ -5,8 +5,8 @@ import tandcData from "../../../assets/tandc.json";
 import "./TandC.sass";
 
 const Comp = ({
-    onSetAgreedtandc,
-}) => {
+                  onSetAgreedtandc,
+              }) => {
     const { web3, accounts } = useContext(
         MetaMaskContext
     );
@@ -34,37 +34,20 @@ const Comp = ({
     }
 
     const signIt = (message) => {
-        const msgParams = [
-            {
-                type: "string", // Any valid solidity type
-                name: "Commons Stack signature", // Any string label you want
-                value: message, // The value to sign
-            },
-        ];
         const from = web3.currentProvider.selectedAddress;
 
-        web3.currentProvider.sendAsync(
-            {
-                method: "eth_signTypedData",
-                params: [msgParams, from],
-                from: from,
-            },
-            function (err, result) {
+        web3.eth.personal.sign(
+            message, from, '',
+            (err, signature) => {
 
                 if (err) {
                     return setSignError("Signature failed.");
                 }
-                // if (err) return console.error(err)
-                if (result.error) {
-                    return setSignError(`Signature error. ${result.error.message}`);
-                    // return console.error()
-                }
 
-                if (!result.result) {
+                if (!signature) {
                     return setSignError("No signature received.");
                 }
-
-                onSetAgreedtandc(message, result.result, accounts[0]);
+                onSetAgreedtandc(message, signature, accounts[0]);
             }
         );
     };
@@ -99,11 +82,11 @@ const Comp = ({
                                             setAgreetandc(e.target.checked);
                                         }}
                                     />
-                  I agree to these terms and conditions
-                </label>
+                                    I agree to these terms and conditions
+                                </label>
                             </div>
                         </div>
-                        {/* 
+                        {/*
                         <div className="field">
                             <div className="control">
                                 <label className="checkbox">
@@ -171,7 +154,7 @@ const Comp = ({
                                         className="button is-pulled-right is-outlined is-success"
                                     >
                                         Sign with my wallet
-                  </button>
+                                    </button>
                                 </div>
                             </div>
                         </div>
