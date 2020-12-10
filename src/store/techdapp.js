@@ -16,6 +16,7 @@ const initialState = {
   softCapTimestamp: undefined,
   totalReceived: undefined,
   loading: false,
+  userIsWhiteListed: false,
 };
 
 const CSTK = new CSTKToken().contract; // CSTK tokencontract on XDAI
@@ -37,10 +38,8 @@ const coins = [
 
 const reducer = (state = initialState, action) => {
   // const newState = { ...state };
-  console.log(`reducer ${action.type}`, state);
   switch (action.type) {
     case 'BOOTSTRAP':
-      console.log('Bootstrap');
       return {
         ...state,
       };
@@ -183,6 +182,37 @@ const reducer = (state = initialState, action) => {
           })
         : (state.balances[action.address] = { status: 'error fetching' });
       return state;
+
+    case 'GET_USER_IS_WHITELISTED':
+      return {
+        ...state,
+        BB_GET_USER_IS_WHITELISTED: new PromiseBlackBox(() => {
+          return api
+            .getUserWhiteListed(action.address)
+            .then((res) => {
+              return {
+                type: 'GET_USER_IS_WHITELISTED_SUCCESS',
+                res,
+              };
+            })
+            .catch((e) => ({ type: 'GET_USER_IS_WHITELISTED_FAIL', e }));
+        }),
+      };
+    case 'GET_USER_IS_WHITELISTED_SUCCESS':
+      delete state.BB_GET_USER_IS_WHITELISTED;
+      return {
+        ...state,
+        userIsWhiteListed: action.res,
+      };
+
+    case 'GET_USER_IS_WHITELISTED_FAIL':
+      delete state.BB_GET_USER_IS_WHITELISTED;
+      return state;
+    case 'USER_IS_WHITELISTED':
+      return {
+        ...state,
+        userIsWhiteListed: true,
+      };
     default:
       return state;
   }

@@ -14,7 +14,7 @@ const coinLogos = [
   // { symbol: "BAT", src: BAT },
 ];
 
-const Comp = ({ agreedtandc, showtandc, account, balances, getBalancesFor }) => {
+const Comp = ({ agreedtandc, showtandc, account, balances, getBalancesFor, userIsWhiteListed }) => {
   const { accounts } = useContext(MetaMaskContext);
 
   // TODO: this should be moved to the store IMO
@@ -111,51 +111,20 @@ const Comp = ({ agreedtandc, showtandc, account, balances, getBalancesFor }) => 
       <div className="subtitle mb-05">
         <div className="title-level">
           <div className="level-left">
-            {agreedtandc === true ? (
-              <div className="">
-                <span className="icon has-text-success">
-                  <i className="fas fa-check-circle" />
-                </span>
-                <span className="is-size-7">Sign Terms and Conditions</span>
-              </div>
-            ) : (
-              <>
-                <span className="icon">
-                  <i className="fas fa-times-circle" />
-                </span>
-                <span className="is-size-7">Sign Terms and Conditions</span>
-              </>
-            )}
+            <span className={agreedtandc ? 'icon has-text-success' : 'icon'}>
+              <i className={agreedtandc ? 'fas fa-check-circle' : 'fas fa-times-circle'} />
+            </span>
+            <span className="is-size-7">Sign Terms and Conditions</span>
           </div>
           <div className="level-left">
-            <span className="icon">
-              <i className="fas fa-times-circle" />
+            <span className={userIsWhiteListed ? 'icon has-text-success' : 'icon'}>
+              <i className={userIsWhiteListed ? 'fas fa-check-circle' : 'fas fa-times-circle'} />
             </span>
             <span className="is-size-7">Member of the Trusted Seed (Allowlist)</span>
           </div>
         </div>
       </div>
       <br />
-      {/* <div className="is-divider mb-08"></div> */}
-      {/* <p className="subtitle">
-        <span>Terms and conditions signed</span>
-        {agreedtandc !== true && accounts && accounts[0] ? (
-          <>
-            [no]{" "}
-            <span
-              onClick={() => {
-                setShowTandC(true);
-              }}
-            >
-              [sign]
-            </span>
-          </>
-        ) : (
-          <>
-            <span>[X]</span>
-          </>
-        )}
-      </p> */}
       <p className="title is-text-overflow mb-2">Total Available Balance</p>
 
       {account ? (
@@ -176,12 +145,13 @@ const Comp = ({ agreedtandc, showtandc, account, balances, getBalancesFor }) => 
   );
 };
 
-const mapStateToProps = ({ showtandc, account, balances, agreedtandc }) => {
+const mapStateToProps = ({ showtandc, account, balances, agreedtandc, userIsWhiteListed }) => {
   return {
     showtandc,
     agreedtandc,
     account,
     balances,
+    userIsWhiteListed,
   };
 };
 
@@ -190,6 +160,7 @@ const mapDispachToProps = (dispatch) => {
     // onSetAgreed: () => dispatch({ type: "AGREE_TANDC" }),
     getBalancesFor: (address) => {
       dispatch({ type: 'GET_BALANCES_FOR_ADDRESS', address });
+      dispatch({ type: 'GET_USER_IS_WHITELISTED', address });
       dispatch({ type: 'READ_SHOW_TANDC', address });
     },
     setShowTandC: (value) => dispatch({ type: 'SET_SHOW_TANDC', value }),
