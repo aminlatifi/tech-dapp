@@ -105,21 +105,30 @@ const Comp = ({ agreedtandc, showtandc, account, balances, getBalancesFor, userI
     return <TandC />;
   }
 
+  const successIcon = (
+    <>
+      <span className="icon has-text-success">
+        <i className="fas fa-check-circle" />
+      </span>
+    </>
+  );
+
+  const failIcon = (
+    <span className="icon">
+      <i className="fas fa-times-circle" />
+    </span>
+  );
   return (
     <>
       <p className="title is-text-overflow mb-2">Membership Terms</p>
       <div className="subtitle mb-05">
         <div className="title-level">
           <div className="level-left">
-            <span className={agreedtandc ? 'icon has-text-success' : 'icon'}>
-              <i className={agreedtandc ? 'fas fa-check-circle' : 'fas fa-times-circle'} />
-            </span>
+            {agreedtandc ? successIcon : failIcon}
             <span className="is-size-7">Sign Terms and Conditions</span>
           </div>
           <div className="level-left">
-            <span className={userIsWhiteListed ? 'icon has-text-success' : 'icon'}>
-              <i className={userIsWhiteListed ? 'fas fa-check-circle' : 'fas fa-times-circle'} />
-            </span>
+            {userIsWhiteListed ? successIcon : failIcon}
             <span className="is-size-7">Member of the Trusted Seed (Allowlist)</span>
           </div>
         </div>
