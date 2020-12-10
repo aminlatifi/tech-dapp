@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
-import { useLocation, Link } from "react-router-dom";
-import MetaMaskButton from "./MetaMaskButton";
-import csLogo from "../assets/headerlogo.svg";
-import "./Navigation.sass";
+import React, { useState, useEffect } from 'react';
+import { useLocation, Link } from 'react-router-dom';
+import MetaMaskButton from './MetaMaskButton';
+import csLogo from '../assets/headerlogo.svg';
+import './Navigation.sass';
 
 const Comp = ({ web3available, agreedtandc, onSetAgreedtandc }) => {
   const location = useLocation();
@@ -10,10 +10,10 @@ const Comp = ({ web3available, agreedtandc, onSetAgreedtandc }) => {
 
   useEffect(() => {
     switch (location.pathname) {
-      case "/":
+      case '/':
         setActiveNavItem(1);
         break;
-      case "/contribute":
+      case '/contribute':
         setActiveNavItem(2);
         break;
       // case "/help":
@@ -33,9 +33,9 @@ const Comp = ({ web3available, agreedtandc, onSetAgreedtandc }) => {
               <img src={csLogo} alt="Logo" />
             </a>
             <span className="navbar-burger burger" data-target="navbarMenu">
-              <span></span>
-              <span></span>
-              <span></span>
+              <span />
+              <span />
+              <span />
             </span>
           </div>
 
@@ -50,20 +50,12 @@ const Comp = ({ web3available, agreedtandc, onSetAgreedtandc }) => {
                   <span>About contribution</span>
                 </Link>
               </div> */}
-              <div
-                className={
-                  activeNavItem === 2 ? "navbar-item is-active" : "navbar-item"
-                }
-              >
+              <div className={activeNavItem === 2 ? 'navbar-item is-active' : 'navbar-item'}>
                 <Link to="/contribute">
                   <span>Membership</span>
                 </Link>
               </div>
-              <div
-                className={
-                  activeNavItem === 3 ? "navbar-item is-active" : "navbar-item"
-                }
-              >
+              <div className={activeNavItem === 3 ? 'navbar-item is-active' : 'navbar-item'}>
                 <span>Need help?</span>
               </div>
             </div>
