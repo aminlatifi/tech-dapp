@@ -80,9 +80,9 @@ const mapStateToProps = ({ account, cstackBalance, rcstackBalance }) => {
   };
 };
 
-const mapDispachToProps = (dispatch) => {
+const mapDispachToProps = dispatch => {
   return {
-    readFundingContract: (value) => dispatch({ type: 'READ_FUNDING_CONTRACT', value }),
+    readFundingContract: value => dispatch({ type: 'READ_FUNDING_CONTRACT', value }),
   };
 };
 

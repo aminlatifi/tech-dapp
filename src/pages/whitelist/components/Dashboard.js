@@ -13,7 +13,7 @@ const Comp = ({ web3available }) => {
 
   useEffect(() => {
     if (web3) {
-      util.isWhitelistAdmin(web3, web3.currentProvider.selectedAddress).then((iswl) => {
+      util.isWhitelistAdmin(web3, web3.currentProvider.selectedAddress).then(iswl => {
         setIsWhitelistAdmin(iswl);
       });
     }
@@ -98,14 +98,14 @@ const Comp = ({ web3available }) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     web3available: state.web3available,
     // web3: state.web3
   };
 };
 
-const mapDispachToProps = (dispatch) => {
+const mapDispachToProps = dispatch => {
   return {
     // onSetweb3available: () => dispatch({ type: "AGREE_TANDC" }),
   };

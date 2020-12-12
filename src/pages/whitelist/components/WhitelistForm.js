@@ -32,14 +32,15 @@ const Comp = ({ web3available }) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     web3available: state.web3available,
     // web3: state.web3
   };
 };
 
-const mapDispachToProps = (dispatch) => {
+// eslint-disable-next-line no-unused-vars
+const mapDispachToProps = dispatch => {
   return {
     // onSetweb3available: () => dispatch({ type: "AGREE_TANDC" }),
   };

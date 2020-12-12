@@ -27,13 +27,13 @@ const Comp = ({ agreed, onSetAgreed }) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     // agreed: state.agreed,
   };
 };
 
-const mapDispachToProps = (dispatch) => {
+const mapDispachToProps = dispatch => {
   return {
     // onSetAgreed: () => dispatch({ type: "AGREE_TANDC" }),
   };

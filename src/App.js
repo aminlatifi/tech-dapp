@@ -22,7 +22,7 @@ function App({ bootstrap }) {
                   key={rootPath}
                   path={rootPath}
                   exact={rootPath === '/'}
-                  render={(props) => (
+                  render={props => (
                     <>
                       <Navigation {...props} />
                       <div className="hero-body">
@@ -42,11 +42,12 @@ function App({ bootstrap }) {
   );
 }
 
-const mapStateToProps = (state) => {
+// eslint-disable-next-line no-unused-vars
+const mapStateToProps = state => {
   return {};
 };
 
-const mapDispachToProps = (dispatch) => {
+const mapDispachToProps = dispatch => {
   return {
     bootstrap: () => dispatch({ type: 'BOOTSTRAP' }),
   };

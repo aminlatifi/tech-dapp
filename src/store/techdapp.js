@@ -1,7 +1,8 @@
 import { PromiseBlackBox } from '@oqton/redux-black-box';
 import ERC20Contract from 'erc20-contract-js';
 import api from '../util/api';
-import CSTKToken from '../util/CSTKToken';
+import CSTKToken from '../blockchain/contracts/CSTKToken';
+import config from '../config';
 
 const initialState = {
   agreedtandc: false,
@@ -24,7 +25,7 @@ const CSTK = new CSTKToken().contract; // CSTK tokencontract on XDAI
 const coins = [
   {
     symbol: 'DAI',
-    contractaddress: '0x6b175474e89094c44da98b954eedeac495271d0f',
+    contractaddress: config.DAITokenAddress,
   },
   {
     symbol: 'CSTK',
@@ -50,8 +51,8 @@ const reducer = (state = initialState, action) => {
         READ_SHOW_TANDC_LOAD: new PromiseBlackBox(() => {
           return api
             .getSignature(action.address)
-            .then((res) => ({ type: 'READ_SHOW_TANDC_LOAD_SUCCESS', res }))
-            .catch((e) => ({ type: 'READ_SHOW_TANDC_LOAD_FAIL', e }));
+            .then(res => ({ type: 'READ_SHOW_TANDC_LOAD_SUCCESS', res }))
+            .catch(e => ({ type: 'READ_SHOW_TANDC_LOAD_FAIL', e }));
         }),
       };
     case 'READ_SHOW_TANDC_LOAD_SUCCESS':
@@ -74,8 +75,8 @@ const reducer = (state = initialState, action) => {
         WRITE_TANDC: new PromiseBlackBox(() => {
           return api
             .postSignature(action.message, action.signature, action.address)
-            .then((res) => ({ type: 'WRITE_TANDC_SUCCESS', res }))
-            .catch((e) => ({ type: 'WRITE_TANDC_FAIL', e }));
+            .then(res => ({ type: 'WRITE_TANDC_SUCCESS', res }))
+            .catch(e => ({ type: 'WRITE_TANDC_FAIL', e }));
         }),
       };
 
@@ -106,8 +107,8 @@ const reducer = (state = initialState, action) => {
         READ_FUNDING_CONTRACT: new PromiseBlackBox(() => {
           return CSTK.totalSupply()
             .call()
-            .then((res) => ({ type: 'READ_FUNDING_CONTRACT_SUCCESS', res }))
-            .catch((e) => ({ type: 'READ_FUNDING_CONTRACT_FAIL', e }));
+            .then(res => ({ type: 'READ_FUNDING_CONTRACT_SUCCESS', res }))
+            .catch(e => ({ type: 'READ_FUNDING_CONTRACT_FAIL', e }));
         }),
       };
 
@@ -144,7 +145,7 @@ const reducer = (state = initialState, action) => {
     case 'GET_BALANCES_FOR_ADDRESS':
       if (!action.address || !state.web3) return state;
       if (!state.balances[action.address]) {
-        state.balances[action.address] = coins.map((coin) => {
+        state.balances[action.address] = coins.map(coin => {
           return { symbol: coin.symbol, status: '??' };
         });
       }
@@ -152,17 +153,17 @@ const reducer = (state = initialState, action) => {
         ...state,
         BB_GET_BALANCES_FOR_ADDRESS: new PromiseBlackBox(() =>
           getBalances(state.web3, action.address, coins)
-            .then((res) => ({
+            .then(res => ({
               type: 'GET_BALANCES_FOR_ADDRESS_SUCCESS',
               res,
               address: action.address,
             }))
-            .catch((e) => ({ type: 'GET_BALANCES_FOR_ADDRESS_FAIL', e })),
+            .catch(e => ({ type: 'GET_BALANCES_FOR_ADDRESS_FAIL', e })),
         ),
       };
     case 'GET_BALANCES_FOR_ADDRESS_SUCCESS':
       delete state.BB_GET_BALANCES_FOR_ADDRESS;
-      const addressBalances = action.res.map((item) => {
+      const addressBalances = action.res.map(item => {
         item.balanceFormatted = parseFloat(state.web3.utils.fromWei(item.balance, 'ether')).toFixed(
           2,
         );
@@ -176,7 +177,7 @@ const reducer = (state = initialState, action) => {
     case 'GET_BALANCES_FOR_ADDRESS_FAIL':
       delete state.BB_GET_BALANCES_FOR_ADDRESS;
       state.balances[action.address] = Array.isArray(state.balances[action.address])
-        ? state.balances[action.address].map((coin) => {
+        ? state.balances[action.address].map(coin => {
             coin.status = 'error fetching';
             return coin;
           })
@@ -189,13 +190,13 @@ const reducer = (state = initialState, action) => {
         BB_GET_USER_IS_WHITELISTED: new PromiseBlackBox(() => {
           return api
             .getUserWhiteListed(action.address)
-            .then((res) => {
+            .then(res => {
               return {
                 type: 'GET_USER_IS_WHITELISTED_SUCCESS',
                 res,
               };
             })
-            .catch((e) => ({ type: 'GET_USER_IS_WHITELISTED_FAIL', e }));
+            .catch(e => ({ type: 'GET_USER_IS_WHITELISTED_FAIL', e }));
         }),
       };
     case 'GET_USER_IS_WHITELISTED_SUCCESS':
@@ -220,13 +221,13 @@ const reducer = (state = initialState, action) => {
 
 const getBalances = async (web3, address, coins) => {
   return Promise.all([
-    ...coins.map((coin) => {
+    ...coins.map(coin => {
       const erc20Contract = coin.erc20Contract || new ERC20Contract(web3, coin.contractaddress);
 
       return erc20Contract
         .balanceOf(address)
         .call()
-        .then((balance) => {
+        .then(balance => {
           return { symbol: coin.symbol, balance };
         });
     }),

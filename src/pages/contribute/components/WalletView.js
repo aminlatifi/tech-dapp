@@ -45,11 +45,11 @@ const Comp = ({ agreedtandc, showtandc, account, balances, getBalancesFor, userI
 
   // DAI balance
   const daiBalance = coins
-    .filter((coin) => {
+    .filter(coin => {
       return coin.symbol === 'DAI';
     })
-    .map((coin) => {
-      const logo = coinLogos.find((coinIcon) => {
+    .map(coin => {
+      const logo = coinLogos.find(coinIcon => {
         return coinIcon.symbol === coin.symbol;
       });
       return (
@@ -74,7 +74,7 @@ const Comp = ({ agreedtandc, showtandc, account, balances, getBalancesFor, userI
   // all other known balances - except DAI
   const otherBalances = coins.reduce((accum, coin) => {
     if (coin.symbol === 'DAI') return accum;
-    const logo = coinLogos.find((coinIcon) => {
+    const logo = coinLogos.find(coinIcon => {
       return coinIcon.symbol === coin.symbol;
     });
 
@@ -164,15 +164,15 @@ const mapStateToProps = ({ showtandc, account, balances, agreedtandc, userIsWhit
   };
 };
 
-const mapDispachToProps = (dispatch) => {
+const mapDispachToProps = dispatch => {
   return {
     // onSetAgreed: () => dispatch({ type: "AGREE_TANDC" }),
-    getBalancesFor: (address) => {
+    getBalancesFor: address => {
       dispatch({ type: 'GET_BALANCES_FOR_ADDRESS', address });
       dispatch({ type: 'GET_USER_IS_WHITELISTED', address });
       dispatch({ type: 'READ_SHOW_TANDC', address });
     },
-    setShowTandC: (value) => dispatch({ type: 'SET_SHOW_TANDC', value }),
+    setShowTandC: value => dispatch({ type: 'SET_SHOW_TANDC', value }),
   };
 };
 

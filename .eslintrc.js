@@ -32,6 +32,7 @@ module.exports = {
         singleQuote: true,
         trailingComma: 'all',
         printWidth: 100,
+        arrowParens: 'avoid',
       },
     ],
     'react/destructuring-assignment': 'off', // Seems to be way too restrictive
@@ -43,6 +44,8 @@ module.exports = {
     'react/no-unescaped-entities': 'off',
     'consistent-return': 'off',
     'no-use-before-define': 'off',
+    'jsx-a11y/click-events-have-key-events': 'off',
+    'jsx-a11y/no-static-element-interactions': 'off',
   },
   env: {
     jest: true,

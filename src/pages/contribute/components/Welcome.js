@@ -27,14 +27,14 @@ const Comp = () => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     ...state.accounts,
     web3available: state.web3available,
   };
 };
 
-const mapDispachToProps = (dispatch) => {
+const mapDispachToProps = dispatch => {
   return {
     onSetAgreed: () => dispatch({ type: 'AGREE_TANDC' }),
   };
