@@ -28,16 +28,11 @@ const DonateModal = props => {
   const [loading, setLoading] = useState(true);
   const [allowanceState, setAllowanceState] = useState(ENOUGH);
 
-  const amin = value => {
-    console.log('Allowance State:', value);
-    setAllowanceState(value);
-  };
   const { DAITokenAddress, givethBridgeAddress } = config;
   const daiTokenContract = new ERC20Contract(web3, DAITokenAddress);
   const givethBridge = new GivethBridge(web3, givethBridgeAddress);
 
   const updateAllowance = async () => {
-    console.log('update allowance');
     return daiTokenContract
       .allowance(account, givethBridgeAddress)
       .call()
@@ -45,7 +40,6 @@ const DonateModal = props => {
   };
 
   useEffect(() => {
-    console.log('useEffect 1');
     setLoading(true);
     if (web3) {
       daiTokenContract
@@ -62,14 +56,13 @@ const DonateModal = props => {
   }, [web3, account, amount]);
 
   useEffect(() => {
-    console.log('useEffect 2, allowance:', allowance, ', amountBN:', amount);
-    amin(amountBN.gt(toBN(allowance)) ? NOT_ENOUGH : ENOUGH);
-  }, [allowance, amount]);
+    setAllowanceState(amountBN.gt(toBN(allowance)) ? NOT_ENOUGH : ENOUGH);
+  }, [allowance, amount, NOT_ENOUGH, ENOUGH]);
 
   if (!web3) return null;
 
   const approve = async () => {
-    await amin(TO_APPROVE);
+    await setAllowanceState(TO_APPROVE);
     try {
       await AllowanceHelper.approveERC20tokenTransfer(daiTokenContract, account);
       updateAllowance();
