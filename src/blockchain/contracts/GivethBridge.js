@@ -7,7 +7,9 @@ class BridgeContract {
 
   donateAndCreateGiver(giver, receivedId, token, amount) {
     // donateAndCreateGiver(address giver, uint64 receiverId, address token, uint _amount)
-    return this.contract.methods.donateAndCreateGiver(giver, receivedId, token, amount);
+    return this.contract.methods
+      .donateAndCreateGiver(giver, receivedId, token, amount)
+      .send({ from: giver });
   }
 }
 

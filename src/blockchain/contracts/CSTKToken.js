@@ -1,7 +1,7 @@
 import Web3 from 'web3';
 import ERC20Contract from 'erc20-contract-js';
 
-const config = require('../config');
+const config = require('../../config');
 
 class CSTKToken {
   constructor() {

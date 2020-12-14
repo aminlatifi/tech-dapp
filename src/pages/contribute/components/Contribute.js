@@ -40,7 +40,7 @@ const Comp = ({
   };
 
   React.useEffect(() => {
-    const changeViewState = (from, to) => {
+    const _changeViewState = (from, to) => {
       // make sure you can only transition from a known state to another known state
       if (viewState === from) {
         setViewState(to);
@@ -49,7 +49,7 @@ const Comp = ({
       }
     };
     if (web3 && agreedtandc) {
-      changeViewState(viewStates.INIT, viewStates.WAITINGTOCONTRIBUTE);
+      _changeViewState(viewStates.INIT, viewStates.WAITINGTOCONTRIBUTE);
     }
   }, [web3, agreedtandc, viewState, viewStates.INIT, viewStates.WAITINGTOCONTRIBUTE]);
 
@@ -173,7 +173,7 @@ const Comp = ({
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     agreedtandc: state.agreedtandc,
     web3: state.web3,
@@ -186,10 +186,10 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispachToProps = (dispatch) => {
+const mapDispachToProps = dispatch => {
   return {
-    onSetAgreedtandc: (signature) => dispatch({ type: 'AGREE_TANDC', signature }),
-    setShowTandC: (value) => dispatch({ type: 'SET_SHOW_TANDC', value }),
+    onSetAgreedtandc: signature => dispatch({ type: 'AGREE_TANDC', signature }),
+    setShowTandC: value => dispatch({ type: 'SET_SHOW_TANDC', value }),
   };
 };
 

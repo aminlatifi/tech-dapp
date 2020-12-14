@@ -29,7 +29,7 @@ const Comp = ({ onSetAgreedtandc }) => {
     return <div>Waiting for web3 provider</div>;
   }
 
-  const signIt = (message) => {
+  const signIt = message => {
     const from = web3.currentProvider.selectedAddress;
 
     web3.eth.personal.sign(message, from, '', (err, signature) => {
@@ -65,12 +65,13 @@ const Comp = ({ onSetAgreedtandc }) => {
 
             <div className="field">
               <div className="control">
+                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                 <label className="checkbox">
                   <input
                     name="agreetandc"
                     type="checkbox"
                     checked={agreetandc}
-                    onChange={(e) => {
+                    onChange={e => {
                       setAgreetandc(e.target.checked);
                     }}
                   />
@@ -78,28 +79,15 @@ const Comp = ({ onSetAgreedtandc }) => {
                 </label>
               </div>
             </div>
-            {/*
-                        <div className="field">
-                            <div className="control">
-                                <label className="checkbox">
-                                    <input
-                                        name="box2"
-                                        type="checkbox"
-                                        checked={box2}
-                                        onChange={(e) => { setBox2(e.target.checked) }}
-                                    />
-                                    and to this
-                            </label>
-                            </div>
-                        </div> */}
             <div className="field">
               <div className="control">
+                {/* eslint-disable-next-line jsx-a11y/label-has-associated-control */}
                 <label className="checkbox">
                   <input
                     name="box3"
                     type="checkbox"
                     checked={box3}
-                    onChange={(e) => {
+                    onChange={e => {
                       setBox3(e.target.checked);
                     }}
                   />
@@ -154,18 +142,17 @@ const Comp = ({ onSetAgreedtandc }) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     agreedtandc: state.agreedtandc,
-    web3available: state.web3available,
   };
 };
 
-const mapDispachToProps = (dispatch) => {
+const mapDispachToProps = dispatch => {
   return {
     onSetAgreedtandc: (message, signature, address) =>
       dispatch({ type: 'AGREE_TANDC', message, signature, address }),
-    setShowTandC: (value) => dispatch({ type: 'SET_SHOW_TANDC', value }),
+    setShowTandC: value => dispatch({ type: 'SET_SHOW_TANDC', value }),
   };
 };
 

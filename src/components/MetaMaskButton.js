@@ -63,10 +63,10 @@ const MetaMaskButton = ({ onWeb3Ready }) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {};
 };
-const mapDispachToProps = (dispatch) => {
+const mapDispachToProps = dispatch => {
   return {
     onWeb3Ready: (web3, account) => dispatch({ type: 'WEB3_AVAILABLE', web3, account }),
   };

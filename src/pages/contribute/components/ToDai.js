@@ -25,7 +25,7 @@ const Comp = ({ balance, coin }) => {
     },
   ];
 
-  const aggregatorContract = aggregatorContracts.find((item) => {
+  const aggregatorContract = aggregatorContracts.find(item => {
     return item.coin === coin;
   });
 
@@ -40,7 +40,7 @@ const Comp = ({ balance, coin }) => {
   aggregator.methods
     .latestAnswer()
     .call()
-    .then((res) => {
+    .then(res => {
       // debugger;
       const BNbalance = new web3.utils.BN(balance);
       const BNrate = new web3.utils.BN(res);
@@ -55,11 +55,11 @@ const Comp = ({ balance, coin }) => {
   );
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {};
 };
 
-const mapDispachToProps = (dispatch) => {
+const mapDispachToProps = dispatch => {
   return {};
 };
 
