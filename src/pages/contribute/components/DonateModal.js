@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState, useRef } from 'react';
 import ERC20Contract from 'erc20-contract-js';
 import config from '../../../config';
 import GivethBridge from '../../../blockchain/contracts/GivethBridge';
@@ -28,24 +28,22 @@ const DonateModal = props => {
   const [allowanceState, setAllowanceState] = useState(ENOUGH);
 
   const { DAITokenAddress, givethBridgeAddress } = config;
-  let daiTokenContract;
-  let givethBridge;
+  const daiTokenContract = useRef(new ERC20Contract(web3, DAITokenAddress));
+  const givethBridge = useRef(new GivethBridge(web3, givethBridgeAddress));
 
-  daiTokenContract = new ERC20Contract(web3, DAITokenAddress);
-  givethBridge = new GivethBridge(web3, givethBridgeAddress);
   useEffect(() => {
     setLoading(true);
-    daiTokenContract = new ERC20Contract(web3, DAITokenAddress);
-    givethBridge = new GivethBridge(web3, givethBridgeAddress);
+    daiTokenContract.current = new ERC20Contract(web3, DAITokenAddress);
+    givethBridge.current = new GivethBridge(web3, givethBridgeAddress);
     setLoading(false);
-  }, [web3]);
+  }, [web3, DAITokenAddress, givethBridgeAddress]);
 
   useEffect(() => {
     if (network !== config.networkId) onClose();
-  }, [network]);
+  }, [network, onClose]);
 
   const updateAllowance = async () => {
-    return daiTokenContract
+    return daiTokenContract.current
       .allowance(address, givethBridgeAddress)
       .call()
       .then(value => setAllowance(value));
@@ -54,7 +52,7 @@ const DonateModal = props => {
   useEffect(() => {
     setLoading(true);
     if (web3) {
-      daiTokenContract
+      daiTokenContract.current
         .allowance(address, givethBridgeAddress)
         .call()
         .then(value => {
@@ -78,7 +76,7 @@ const DonateModal = props => {
   const approve = async () => {
     await setAllowanceState(TO_APPROVE);
     try {
-      await AllowanceHelper.approveERC20tokenTransfer(daiTokenContract, address);
+      await AllowanceHelper.approveERC20tokenTransfer(daiTokenContract.current, address);
       updateAllowance();
     } catch (e) {
       console.error(e);
@@ -87,7 +85,12 @@ const DonateModal = props => {
   };
 
   const donate = () => {
-    givethBridge.donateAndCreateGiver(address, config.targetProjectId, DAITokenAddress, amountWei);
+    givethBridge.current.donateAndCreateGiver(
+      address,
+      config.targetProjectId,
+      DAITokenAddress,
+      amountWei,
+    );
     onClose();
   };
 

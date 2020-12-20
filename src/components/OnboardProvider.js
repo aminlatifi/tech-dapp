@@ -71,7 +71,11 @@ const Comp = ({ onWeb3Ready, children }) => {
   }, [onboard, web3, address, network]);
 
   const changeWallet = () => {
-    if (onboard) onboard.walletSelect();
+    if (onboard) {
+      onboard.walletSelect().then(walletSelected => {
+        if (walletSelected) onboard.walletCheck();
+      });
+    }
   };
 
   return (

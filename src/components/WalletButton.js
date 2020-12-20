@@ -10,8 +10,15 @@ const WalletButton = () => {
         type="button"
         className="button is-outlined is-success"
         onClick={() => {
-          if (onboard) onboard.walletSelect();
-          else console.error('onboard is not loaded!');
+          if (onboard) {
+            onboard.walletSelect().then(walletSelected => {
+              if (walletSelected) {
+                onboard.walletCheck();
+              }
+            });
+          } else {
+            console.error('onboard is not loaded!');
+          }
         }}
       >
         Connect Wallet
